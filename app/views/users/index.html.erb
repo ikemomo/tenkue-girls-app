@@ -2,6 +2,8 @@
 <p>Find me in app/views/users/index.html.erb</p>
 
 <% @users.each do |user| %>
+  <%# プロフィール画像 %>
+  <%= image_tag user.image.url, width: 50 %>
   <%# ユーザー名 %>
   <%= user.name %>
   <%# 年齢 %>
