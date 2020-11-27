@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        content:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
