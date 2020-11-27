@@ -3,7 +3,7 @@
     <% if user_signed_in? %>  
       <% # ログインしている時 %>
       <%= link_to "mypage", "#" %>
-      <%= link_to "log out", "#" %>
+      <%= link_to "log out", destroy_user_session_path, method: :delete %>
     <% else %>
       <% # ログインしていない時 %>
       <%= link_to "sign up", new_user_registration_path %>
