@@ -4,13 +4,17 @@
   <% @users.each do |user| %>
     <li>
       <%# プロフィール画像 %>
-      <%# unless user.image.null? %>  
       <%= image_tag user.image.url, width: 50 %>
-      <%# end %>
       <%# ユーザー名 %>
       <%= user.name %>
       <%# 年齢 %>
+      <% unless user.birthday.nil? %>
+        <%= (Date.today.strftime('%Y%m%d').to_i - user.birthday.strftime('%Y%m%d').to_i) / 10000  %>
+      <% end %>
       <%# エンジニア歴 %>
+      <% unless user.engineer_start_at.nil? %>
+        <%= (Date.today.strftime('%Y%m%d').to_i - user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>
+      <% end %>
       <%# 雇用形態 %>
       <%# 婚姻歴 %>
       <%# 育児状況 %>
