@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   email_format = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
