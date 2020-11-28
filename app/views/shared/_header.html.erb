@@ -8,5 +8,6 @@
       <% # ログインしていない時 %>
       <%= link_to "sign up", new_user_registration_path %>
       <%= link_to "log in", user_session_path %>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
     <% end %>
 </header>

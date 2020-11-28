@@ -2,15 +2,21 @@
 <p>Find me in app/views/users/index.html.erb</p>
 
 <% @users.each do |user| %>
-  <%# プロフィール画像 %>
-  <%= image_tag user.image.url, width: 50 %>
-  <%# ユーザー名 %>
-  <%= user.name %>
-  <%# 年齢 %>
-  <%# エンジニア歴 %>
-  <%# 雇用形態 %>
-  <%# 婚姻歴 %>
-  <%# 育児状況 %>
-  <%# 介護状況 %>
-  <%# コメント %>
+  <ul>
+    <li>
+      <%# プロフィール画像 %>
+      <%# unless user.image.null? %>  
+        <%# image_tag user.image.url, width: 50 %>
+      <%# end %>
+      <%# ユーザー名 %>
+      <%= user.name %>
+      <%# 年齢 %>
+      <%# エンジニア歴 %>
+      <%# 雇用形態 %>
+      <%# 婚姻歴 %>
+      <%# 育児状況 %>
+      <%# 介護状況 %>
+      <%# コメント %>
+    </li>
+  </ul>
 <% end %>

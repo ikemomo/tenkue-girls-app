@@ -7,4 +7,10 @@ class User < ApplicationRecord
   validates :email, format: { with: email_format }
   validates :password, format: { with: password_format }, length: { in: 8..32 }
   mount_uploader :image, ImageUploader
+
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザ', email: 'guest@example.com' ) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
