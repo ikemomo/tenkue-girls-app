@@ -1,0 +1,25 @@
+<ul>
+  <% @users.each do |user| %>
+    <%= link_to user_path(user.id) do %>  
+      <li class="user_index">
+        <%# プロフィール画像 %>
+        <%= image_tag user.image.url, width: 50 %>
+        <%# ユーザー名 %>
+        ユーザー名：<%= user.name %><br>
+        <%# 年齢 %>
+        <% unless user.birthday.nil? %>
+          年齢：<%= (Date.today.strftime('%Y%m%d').to_i - user.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳
+        <% end %>
+        <%# エンジニア歴 %>
+        <% unless user.engineer_start_at.nil? %>
+          エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目
+        <% end %>
+        <%# 雇用形態 %>
+        <%# 婚姻歴 %>
+        <%# 育児状況 %>
+        <%# 介護状況 %>
+        <%# コメント %>
+      </li>
+    <% end %>
+  <% end %>
+</ol>

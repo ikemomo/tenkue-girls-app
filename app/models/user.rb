@@ -1,4 +1,16 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  email_format = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  password_format = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+  validates :name, presence: true
+  validates :email, format: { with: email_format }
+  validates :password, format: { with: password_format }, length: { in: 8..32 }
+  mount_uploader :image, ImageUploader
+
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザ', email: 'guest@example.com' ) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
