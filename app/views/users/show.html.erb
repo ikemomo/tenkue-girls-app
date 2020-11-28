@@ -1,2 +1,18 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3>ユーザーネーム：<%= @user.name %></h3>
+<ul>
+  <%# プロフィール画像 %>
+  <%= image_tag @user.image.url, width: 100 %>
+  <%# 年齢 %>
+  <% unless @user.birthday.nil? %>  
+    <li>年齢：<%= (Date.today.strftime('%Y%m%d').to_i - @user.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳</li>
+  <% end %>
+  <%# エンジニア歴 %>
+  <% unless @user.engineer_start_at.nil? %>  
+    <li>エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - @user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目</li>
+  <% end %>
+  <li>雇用形態</li>
+  <li>婚姻歴</li>
+  <li>育児状況</li>
+  <li>介護状況</li>
+  <li>コメント</li>
+</ul>
