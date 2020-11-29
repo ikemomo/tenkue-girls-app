@@ -14,29 +14,30 @@
     <% unless @user.engineer_start_at.nil? %>  
       <li>エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - @user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目</li>
     <% end %>
-    
-    <%# 雇用形態 %>
-    <li>雇用形態：<%= @post.employment_status %></li>
-    
-    <%# 婚姻歴 %>
-    <li>婚姻歴：<%= @post.marriage %></li>
-    
-    <%# 育児状況 %>
-    <li>育児状況：<%= @post.childcare %></li>
-    
-    <%# 介護状況 %>
-    <li>
-      介護状況：
-      <% if @post.care == true %>
-        介護あり
-      <% else %>
-        介護なし
-      <% end %>
-    </li>
+    <% unless @user.posts.count == 0 %>
+      <%# 雇用形態 %>
+      <li>雇用形態：<%= @post.employment_status %></li>
+      
+      <%# 婚姻歴 %>
+      <li>婚姻歴：<%= @post.marriage %></li>
+      
+      <%# 育児状況 %>
+      <li>育児状況：<%= @post.childcare %></li>
+      
+      <%# 介護状況 %>
+      <li>
+        介護状況：
+        <% if @post.care == true %>
+          介護あり
+        <% else %>
+          介護なし
+        <% end %>
+      </li>
 
-    <%# コメント %>
-    <% unless @post.content == "" %>
-      <li><%= @post.content %></li>
+      <%# コメント %>
+      <% unless @post.content == "" %>
+        <li><%= @post.content %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>
