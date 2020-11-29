@@ -23,6 +23,7 @@
 
 <%# 投稿一覧 %>
 <% @posts.each do |post| %>
+  <hr>
   <ul>
     <li>期間：<%= post.start_at %> ~ <%= post.end_at %></li>
     <li>雇用形態：<%= post.employment_status %></li>
@@ -41,4 +42,5 @@
     </li>
     <li>コメント：<%= post.content %></li>
   </ul>
+  <hr>
 <% end %>

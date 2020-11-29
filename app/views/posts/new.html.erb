@@ -40,8 +40,8 @@
   <% # 介護状況 %>
   <div class="field">
     <%= f.label :care, "介護状況" %><br>
-    <%= f.radio_button :care, "介護あり" %>介護あり
-    <%= f.radio_button :care, "介護なし" %>介護なし
+    <%= f.radio_button :care, "true" %>介護あり
+    <%= f.radio_button :care, "false" %>介護なし
   </div>
   <p></p>
   <% # コメント %>
