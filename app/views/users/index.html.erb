@@ -14,11 +14,29 @@
         <% unless user.engineer_start_at.nil? %>
           エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目
         <% end %>
-        <%# 雇用形態 %>
-        <%# 婚姻歴 %>
-        <%# 育児状況 %>
-        <%# 介護状況 %>
-        <%# コメント %>
+        <% unless user.posts.count == 0 %>
+          <% @post = user.posts.last %>
+          <%# 雇用形態 %>
+          雇用形態：<%= @post.employment_status %>
+        
+          <%# 婚姻歴 %>
+          婚姻歴：<%= @post.marriage %>
+        
+          <%# 育児状況 %>
+          育児状況：<%= @post.childcare %>
+        
+          <%# 介護状況 %>
+          <% if @post.care == true %>
+            介護あり
+          <% else %>
+            介護なし
+          <% end %>
+        
+          <%# コメント %>
+          <% unless @post.content == "" %>
+            コメント：<%= @post.content %>
+          <% end %>
+        <% end %>
       </li>
     <% end %>
   <% end %>

@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'home/show'
   resources :users, only: [:index, :show]
+  resources :posts
 end
