@@ -12,23 +12,23 @@
   <% # 雇用形態 %>
   <div class="field">
     <%= f.label :employment_status, "雇用形態" %><br>
-    <%= f.select :employment_status, [["正社員", "正社員"], ["契約社員", "契約社員"], ["業務委託", "業務委託"], ["フリーランス", "フリーランス"], ["アルバイト", "アルバイト"]], {include_blank: "選択してください"}, {class: 'form-control', required: true} %>
+    <%= f.select :employment_status, [["正社員", "正社員"], ["契約社員", "契約社員"], ["業務委託", "業務委託"], ["フリーランス", "フリーランス"], ["アルバイト", "アルバイト"], ["その他", "その他"]], {include_blank: "選択してください"}, {class: 'form-control', required: true} %>
   </div>
   <p></p>
   <% # 婚姻歴 %>
   <div class="field">
     <%= f.label :marriage, "婚姻歴" %><br>
-    <%= f.radio_button :marriage, checked: true %>未婚
-    <%= f.radio_button :marriage, checked: true %>既婚
-    <%= f.radio_button :marriage, checked: true %>離別
+    <%= f.radio_button :marriage, "未婚" %>未婚
+    <%= f.radio_button :marriage, "既婚" %>既婚
+    <%= f.radio_button :marriage, "離別" %>離別
   </div>
   <p></p>
   <% # 育児状況 %>
   <div class="field">
     <%= f.label :childcare, "育児状況" %><br>
-    <%= f.radio_button :childcare, checked: true %>子供なし
-    <%= f.radio_button :childcare, checked: true %>子供あり(育児なし)
-    <%= f.radio_button :childcare, checked: true %>子供あり(育児あり)
+    <%= f.radio_button :childcare, "子供なし" %>子供なし
+    <%= f.radio_button :childcare, "子供あり(育児なし)" %>子供あり(育児なし)
+    <%= f.radio_button :childcare, "子供あり(育児あり)" %>子供あり(育児あり)
   </div>
   <p></p>
   <% # 子供の人数 %>
@@ -40,8 +40,8 @@
   <% # 介護状況 %>
   <div class="field">
     <%= f.label :care, "介護状況" %><br>
-    <%= f.radio_button :care, checked: true %>介護あり
-    <%= f.radio_button :care, checked: true %>介護なし
+    <%= f.radio_button :care, "介護あり" %>介護あり
+    <%= f.radio_button :care, "介護なし" %>介護なし
   </div>
   <p></p>
   <% # コメント %>
