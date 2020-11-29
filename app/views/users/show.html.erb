@@ -44,6 +44,7 @@
 <%# 新規追加 %>
 <% if user_signed_in? && current_user.id == @user.id %>
   <%= link_to "新規追加", new_post_path %>
+  <%= link_to "ユーザ情報編集", edit_user_registration_path %>
 <% end %>
 
 <%# 投稿一覧 %>
