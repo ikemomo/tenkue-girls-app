@@ -8,4 +8,9 @@ class UsersController < ApplicationController
     @post = @user.posts.last
     @posts = @user.posts.order("created_at DESC")
   end
+
+  def follow
+    @user = User.find(params[:id])
+    @followings = @user.followings.order
+  end
 end
