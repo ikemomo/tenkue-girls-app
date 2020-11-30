@@ -37,6 +37,8 @@
             コメント：<%= @post.content %>
           <% end %>
         <% end %>
+        
+        <%# フォローボタン %>
         <% if current_user != user %>
           <% if user.followed_by?(current_user) %>
             <P><%= link_to "フォロー中", user_relationships_path(user.id), method: :delete %></p>
