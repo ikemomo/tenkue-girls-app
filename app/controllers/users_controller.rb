@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @followings = @user.followings.order
+    @followings = @user.followings.order("created_at DESC")
   end
 
   def follower
-    @followers = @user.followers.order
+    @followers = @user.followers.order("created_at DESC")
   end
 
   private
