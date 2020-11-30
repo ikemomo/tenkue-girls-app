@@ -52,8 +52,8 @@
     
     <%# フォロー数 %>
     <p>
-      <%= @user.followings.count %>フォロー中
-      <%= @user.followers.count %>フォロワー
+      <%= link_to @user.followings.count, user_follow_path(@user.id) %>フォロー中
+      <%= link_to @user.followers.count, user_follower_path(@user.id) %>フォロワー
     </p>
   </ul>
 </div>
