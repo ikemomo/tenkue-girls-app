@@ -7,4 +7,5 @@
   <% else %>
     <p>まだフォロー中のユーザーがいません</p>
   <% end %>
+  <%= link_to "フォロワー", user_follower_path(@user.id) %>
 </ul>
