@@ -8,4 +8,5 @@
     <p>まだフォロワーがいません</p>
   <% end %>
   <%= link_to "フォロー中", user_follow_path(@user.id) %>
+  <%= link_to "マイページに戻る", user_path(@user.id)%>
 </ul>
