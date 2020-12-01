@@ -2,11 +2,58 @@
 <ul>  
   <% if @followings.count != 0 %>
     <% @followings.each do |following| %>
-      <li><%= link_to following.name, user_path(following.id) %></li>
+      <%= link_to user_path(following.id) do %>
+        <li class="user_index">
+          <%# プロフィール画像 %>
+          <%= image_tag following.image.url, width: 50 %>
+          <%# ユーザー名 %>
+          ユーザー名：<%= following.name %><br>
+          <%# 年齢 %>
+          <% unless following.birthday.nil? %>
+            年齢：<%= (Date.today.strftime('%Y%m%d').to_i - following.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳
+          <% end %>
+          <%# エンジニア歴 %>
+          <% unless following.engineer_start_at.nil? %>
+            エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - following.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目
+          <% end %>
+          <% unless following.posts.count == 0 %>
+            <% @post = following.posts.last %>
+            <%# 雇用形態 %>
+            雇用形態：<%= @post.employment_status %>
+          
+            <%# 婚姻歴 %>
+            婚姻歴：<%= @post.marriage %>
+          
+            <%# 育児状況 %>
+            育児状況：<%= @post.childcare %>
+          
+            <%# 介護状況 %>
+            <% if @post.care == true %>
+              介護あり
+            <% else %>
+              介護なし
+            <% end %>
+          
+            <%# コメント %>
+            <% unless @post.content == "" %>
+              コメント：<%= @post.content %>
+            <% end %>
+          <% end %>
+          
+          <%# フォローボタン %>
+          <% if current_user != following %>
+            <% if following.followed_by?(current_user) %>
+              <P><%= link_to "フォロー中", user_relationships_path(following.id), method: :delete %></p>
+            <% else %>
+              <P><%= link_to "フォローする", user_relationships_path(following.id), method: :post %></p>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>  
     <% end %>
   <% else %>
     <p>まだフォロー中のユーザーがいません</p>
   <% end %>
-  <%= link_to "フォロワー", user_follower_path(@user.id) %>
-  <%= link_to "マイページに戻る", user_path(@user.id)%>
 </ul>
+<%= link_to "フォロワー", user_follower_path(@user.id) %>
+<%= link_to "マイページに戻る", user_path(@user.id)%>

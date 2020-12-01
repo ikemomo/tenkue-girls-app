@@ -1,6 +1,6 @@
 <ul>
   <% @users.each do |user| %>
-    <%= link_to user_path(user.id) do %>  
+    <%= link_to user_path(user.id) do %>
       <li class="user_index">
         <%# プロフィール画像 %>
         <%= image_tag user.image.url, width: 50 %>
