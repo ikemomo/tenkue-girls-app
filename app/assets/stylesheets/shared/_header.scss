@@ -1,4 +1,35 @@
+//ブラウザの初期スタイルをリセット
+* {
+  margin:0;
+  padding:0;
+}
+
 header {
-  background-color: #ccc;
-  height: 60px;
+  background-color: rgba(0,0,0,0);
+  box-sizing: border-box;
+  color:#404040;
+  font-size: 25px;
+  height: 83px;
+  margin-left: 53px;
+  position: relative;
+
+    //タイトルロゴ
+    .logo{
+      position: absolute;
+      bottom: 24.5px;
+    }
+    
+    .header-items{
+      position: absolute;
+      right: 53px;
+      bottom: 24.5px;
+
+      .header-item{
+        margin-left: 30px;
+        &:hover, &:link, &:visited, &:active { 
+          color: #404040;
+          text-decoration: none;
+        }
+      }
+    }
 }
