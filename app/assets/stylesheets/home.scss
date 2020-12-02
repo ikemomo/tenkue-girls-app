@@ -1,3 +1,46 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top{
+  &__bg{
+    background-image: url(top-image.jpg);
+    background-position: center;
+    background-size: cover;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+
+    &__cover{
+      height: 100%;
+      background-color: rgba(255,255,255,0.5);
+    }
+  }
+  
+  &__img{
+    height: 452px;
+    width: 1438px;
+  }
+  
+  &__btn{
+    width: 249px;
+    height: 79px;
+    background-color: #80A0A0 ;
+    border-radius: 43px;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+    border: none;
+    list-style: none;
+
+    a{
+      text-decoration: none;
+      color: black;
+      font-size: 25px;
+    }
+  }
+  
+}
+

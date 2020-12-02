@@ -1,5 +1,13 @@
-<h1>サイト名</h1>
-<p>女性エンジニアのロールモデルが分かるサイト</p>
-
-<% # ユーザー検索リンク %>
-<%= link_to "ユーザー検索", users_path %>
+<article class="top">
+<div class="top__bg">
+<div class="top__bg__cover">
+  <h1 class="top__siteTitle">サイト名</h1>
+  <p class="top__subTitle">女性エンジニアのロールモデルが分かるサイト</p>
+  <img class="top__img" src="" alt="ユーザー一覧とユーザー詳細のサンプル画像">
+  <% # ユーザー検索リンク %>
+  <div>
+  <button class="top__btn"><%= link_to "ユーザー検索", users_path %></button>
+  </div>
+</div>
+</div>
+</article>
