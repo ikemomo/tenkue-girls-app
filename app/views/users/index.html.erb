@@ -1,3 +1,10 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :name, "ユーザ名" %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.submit "検索" %>
+<% end %>
+
 <ul>
   <% @users.each do |user| %>
     <%= link_to user_path(user.id) do %>
