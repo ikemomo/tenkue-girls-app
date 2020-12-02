@@ -6,14 +6,16 @@
 
 header {
   background-color: rgba(0,0,0,0);
-  box-sizing: border-box;
-  color:#404040;
-  font-size: 25px;
-  height: 83px;
-  margin-left: 53px;
-  position: relative;
-
-    //タイトルロゴ
+  position: fixed;
+  width: 100%;
+  
+  .header-container{
+    color:#404040;
+    font-size: 25px;
+    height: 83px;
+    margin-left: 53px;
+    position: relative;
+    
     .logo{
       position: absolute;
       bottom: 24.5px;
@@ -32,4 +34,5 @@ header {
         }
       }
     }
+  }
 }
