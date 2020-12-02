@@ -1,7 +1,30 @@
 <%= search_form_for @q do |f| %>
+  <% #ユーザ名検索フォーム%>
   <%= f.label :name, "ユーザ名" %>
   <%= f.search_field :name_cont %>
+  <% #ユーザ名検索フォーム%>
+  <% #エンジニア歴 %>
+  <% #現在の雇用形態 %>
+  <p>
+    <%= f.label :posts_employment_status, "雇用形態" %>
+    <%= f.radio_button :posts_employment_status_eq, ' ', {:checked => true} %>
+    <span>指定なし</span>
+    <%= f.radio_button :posts_employment_status_eq, '正社員' %>
+    <span>正社員</span>
+    <%= f.radio_button :posts_employment_status_eq, '契約社員' %>
+    <span>契約社員</span>
+    <%= f.radio_button :posts_employment_status_eq, '業務委託' %>
+    <span>業務委託</span>
+    <%= f.radio_button :posts_employment_status_eq, 'フリーランス' %>
+    <span>フリーランス</span>
+    <%= f.radio_button :posts_employment_status_eq, 'アルバイト' %>
+    <span>アルバイト</span>
+    <%= f.radio_button :posts_employment_status_eq, 'その他' %>
+    <span>その他</span>
+  </p>
 
+
+  
   <%= f.submit "検索" %>
 <% end %>
 
