@@ -53,6 +53,11 @@
     <%= f.date_field :engineer_start_at %>
   </div>
 
+  <% # 画像アップロード %>
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
   <div class="actions">
     <%= f.submit "更新" %>
   </div>
