@@ -1,0 +1,59 @@
+<h3>フォロワー</h3>
+<ul>
+  <% if @followers.count != 0 %>
+    <% @followers.each do |follower| %>
+      <%= link_to user_path(follower.id) do %>  
+        <li class="user_index">
+          <%# プロフィール画像 %>
+          <%= image_tag follower.image.url, width: 50 %>
+          <%# ユーザー名 %>
+          ユーザー名：<%= follower.name %><br>
+          <%# 年齢 %>
+          <% unless follower.birthday.nil? %>
+            年齢：<%= (Date.today.strftime('%Y%m%d').to_i - follower.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳
+          <% end %>
+          <%# エンジニア歴 %>
+          <% unless follower.engineer_start_at.nil? %>
+            エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - follower.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目
+          <% end %>
+          <% unless follower.posts.count == 0 %>
+            <% @post = follower.posts.last %>
+            <%# 雇用形態 %>
+            雇用形態：<%= @post.employment_status %>
+          
+            <%# 婚姻歴 %>
+            婚姻歴：<%= @post.marriage %>
+          
+            <%# 育児状況 %>
+            育児状況：<%= @post.childcare %>
+          
+            <%# 介護状況 %>
+            <% if @post.care == true %>
+              介護あり
+            <% else %>
+              介護なし
+            <% end %>
+          
+            <%# コメント %>
+            <% unless @post.content == "" %>
+              コメント：<%= @post.content %>
+            <% end %>
+          <% end %>
+          
+          <%# フォローボタン %>
+          <% if current_user != follower %>
+            <% if follower.followed_by?(current_user) %>
+              <P><%= link_to "フォロー中", user_relationships_path(follower.id), method: :delete %></p>
+            <% else %>
+              <P><%= link_to "フォローする", user_relationships_path(follower.id), method: :post %></p>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>まだフォロワーがいません</p>
+  <% end %>
+</ul>
+<%= link_to "フォロー中", user_follow_path(@user.id) %>
+<%= link_to "マイページに戻る", user_path(@user.id)%>
