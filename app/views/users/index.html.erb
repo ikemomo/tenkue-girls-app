@@ -23,6 +23,19 @@
     <span>その他</span>
   </p>
 
+  <p>
+    <% #婚姻歴 %>
+    <%= f.label :posts_marriage, "婚姻歴" %>
+      <%= f.radio_button :posts_marriage_eq, ' ', {:checked => true} %>
+      <span>指定なし</span>
+      <%= f.radio_button :posts_marriage_eq, '未婚' %>
+      <span>未婚</span>
+      <%= f.radio_button :posts_marriage_eq, '既婚' %>
+      <span>既婚</span>
+      <%= f.radio_button :posts_marriage_eq, '離別' %>
+      <span>離別</span>
+  </p>
+
 
   
   <%= f.submit "検索" %>
