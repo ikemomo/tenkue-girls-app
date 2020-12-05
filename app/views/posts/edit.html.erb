@@ -1,1 +1,28 @@
 <h1>編集画面</<h1>
+  <ul>
+    <li>
+      期間：<%= @post.start_at %> ~ <%= @post.end_at %>
+
+    </li>
+    <li>雇用形態：<%= @post.employment_status %></li>
+    <li>婚姻歴：<%= @post.marriage %></li>
+    <li>育児状況：<%= @post.childcare %></li>
+    <% unless @post.child.nil? %>
+      <li>子供：<%= @post.child %>人</li>
+    <% end %>
+    <li>
+      介護状況：
+      <% if @post.care == true %>
+        介護あり
+      <% else %>
+        介護なし
+      <% end %>
+    </li>
+    <% unless @post.content == "" %>
+      <li>コメント：<%= @post.content %></li>
+    <% end %>
+  </ul>
+
+  <%# 保存ボタン %>
+
+    <%= link_to "保存", edit_post_path %>
