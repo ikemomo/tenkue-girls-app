@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  require "pry"
   def create
     @post = Post.new(post_params)
     if @post.save

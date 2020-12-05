@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @post = @user.posts.last
+    if @post  
+      @user.update(marriage: @post.marriage)
+    end
     @posts = @user.posts.order("created_at DESC")
   end
 
