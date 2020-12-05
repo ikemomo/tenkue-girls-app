@@ -6,34 +6,58 @@
   <% #エンジニア歴 %>
   <% #現在の雇用形態 %>
   <p>
-    <%= f.label :posts_employment_status, "雇用形態" %>
-    <%= f.radio_button :posts_employment_status_eq, ' ', {:checked => true} %>
+    <%= f.label :employment_status, "雇用形態" %>
+    <%= f.radio_button :employment_status_eq, ' ', {:checked => true} %>
     <span>指定なし</span>
-    <%= f.radio_button :posts_employment_status_eq, '正社員' %>
+    <%= f.radio_button :employment_status_eq, '正社員' %>
     <span>正社員</span>
-    <%= f.radio_button :posts_employment_status_eq, '契約社員' %>
+    <%= f.radio_button :employment_status_eq, '契約社員' %>
     <span>契約社員</span>
-    <%= f.radio_button :posts_employment_status_eq, '業務委託' %>
+    <%= f.radio_button :employment_status_eq, '業務委託' %>
     <span>業務委託</span>
-    <%= f.radio_button :posts_employment_status_eq, 'フリーランス' %>
+    <%= f.radio_button :employment_status_eq, 'フリーランス' %>
     <span>フリーランス</span>
-    <%= f.radio_button :posts_employment_status_eq, 'アルバイト' %>
+    <%= f.radio_button :employment_status_eq, 'アルバイト' %>
     <span>アルバイト</span>
-    <%= f.radio_button :posts_employment_status_eq, 'その他' %>
+    <%= f.radio_button :employment_status_eq, 'その他' %>
     <span>その他</span>
   </p>
 
   <p>
     <% #婚姻歴 %>
-    <%= f.label :posts_marriage, "婚姻歴" %>
-      <%= f.radio_button :posts_marriage_eq, ' ', {:checked => true} %>
+    <%= f.label :marriage, "婚姻歴" %>
+      <%= f.radio_button :marriage_eq, ' ', {:checked => true} %>
       <span>指定なし</span>
-      <%= f.radio_button :posts_marriage_eq, '未婚' %>
+      <%= f.radio_button :marriage_eq, '未婚' %>
       <span>未婚</span>
-      <%= f.radio_button :posts_marriage_eq, '既婚' %>
+      <%= f.radio_button :marriage_eq, '既婚' %>
       <span>既婚</span>
-      <%= f.radio_button :posts_marriage_eq, '離別' %>
+      <%= f.radio_button :marriage_eq, '離別' %>
       <span>離別</span>
+  </p>
+
+  <p>
+    <% #育児状況 %>
+    <%= f.label :childcare, "育児状況" %>
+      <%= f.radio_button :childcare_eq, ' ', {:checked => true} %>
+      <span>指定なし</span>
+      <%= f.radio_button :childcare_eq, '子供なし' %>
+      <span>子供なし</span>
+      <%= f.radio_button :childcare_eq, '子供あり(育児なし)' %>
+      <span>子供あり(育児なし)</span>
+      <%= f.radio_button :childcare_eq, '子供あり(育児あり)' %>
+      <span>子供あり（育児あり）</span>
+  </p>
+
+  <p>
+    <% #介護状況 %>
+    <%= f.label :care, "介護状況" %>
+      <%= f.radio_button :care_eq, ' ', {:checked => true} %>
+      <span>指定なし</span>
+      <%= f.radio_button :care_eq, false %>
+      <span>介護なし</span>
+      <%= f.radio_button :care_eq, true %>
+      <span>介護あり</span>
   </p>
 
 
@@ -51,11 +75,11 @@
         ユーザー名：<%= user.name %><br>
         <%# 年齢 %>
         <% unless user.birthday.nil? %>
-          年齢：<%= (Date.today.strftime('%Y%m%d').to_i - user.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳
+          年齢：<%= age(user) %>歳
         <% end %>
         <%# エンジニア歴 %>
         <% unless user.engineer_start_at.nil? %>
-          エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目
+          エンジニア歴：<%= engineer_history(user) %>年目
         <% end %>
         <% unless user.posts.count == 0 %>
           <% @post = user.posts.last %>
