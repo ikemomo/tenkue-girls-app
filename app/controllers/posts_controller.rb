@@ -18,6 +18,14 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
   end
 
+  def update
+    @post = Post.find_by(id: params[:id])
+    if @post.update_attributes(post_params)
+      redirect_to user_path(@post.user.id)
+    else
+      render :edit
+  end
+
   private
   def post_params
     params.require(:post).permit(:start_at, :end_at, :marriage, :child, :childcare, :care, :employment_status, :content).merge(user_id: current_user.id)
