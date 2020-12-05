@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
+    @user = User.find(current_user.id)
   end
 
-  require "pry"
   def create
     @post = Post.new(post_params)
     if @post.save
