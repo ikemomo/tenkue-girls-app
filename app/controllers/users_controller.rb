@@ -8,8 +8,12 @@ class UsersController < ApplicationController
 
   def show
     @post = @user.posts.last
-    @user.marriage = @post.marriage
-    @user.save
+    @user.update(
+      marriage: @post.marriage,
+      childcare: @post.childcare,
+      care: @post.care,
+      employment_status: @post.employment_status
+    )
     @posts = @user.posts.order("created_at DESC")
   end
 
