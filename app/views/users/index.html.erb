@@ -2,9 +2,33 @@
   <% #ユーザ名検索フォーム%>
   <%= f.label :name, "ユーザ名" %>
   <%= f.search_field :name_cont %>
-  <% #ユーザ名検索フォーム%>
-  <% #エンジニア歴 %>
-  <% #現在の雇用形態 %>
+  <p>
+    <%= f.label :age, "年齢" %>
+    <%= f.number_field :age_gteq, min: 0 %>歳
+    〜
+    <%= f.number_field :age_lteq, min: 1 %>歳
+  </p>
+  <p>
+    <%= f.label :engineer_history, "エンジニア歴" %>
+    <%= f.radio_button :engineer_history_eq, ' ', {:checked => true} %>
+    <span>指定なし</span>
+    <%= f.radio_button :engineer_history_eq, '未経験' %>
+    <span>未経験</span>
+    <%= f.radio_button :engineer_history_lteq, 1 %>
+    <span>〜１年</span>
+    <%= f.radio_button :engineer_history_lteq, 3 %>
+    <span>〜３年</span>
+    <%= f.radio_button :engineer_history_lteq, 5 %>
+    <span>〜５年</span>
+    <%= f.radio_button :engineer_history_lteq, 10 %>
+    <span>〜１０年</span>
+    <%= f.radio_button :engineer_history_lteq, 15 %>
+    <span>〜１５年</span>
+    <%= f.radio_button :engineer_history_lteq, 20 %>
+    <span>〜２０年</span>
+    <%= f.radio_button :engineer_history_gteq, 21 %>
+    <span>２１年〜</span>
+  </p>
   <p>
     <%= f.label :employment_status, "雇用形態" %>
     <%= f.radio_button :employment_status_eq, ' ', {:checked => true} %>
