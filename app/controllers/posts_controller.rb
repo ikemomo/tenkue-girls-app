@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @post = Post.new
   end
@@ -12,6 +12,9 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
   end
 
   private

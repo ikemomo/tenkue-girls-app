@@ -72,7 +72,6 @@
       <%# 編集と削除ボタン %>
       <% if user_signed_in? && current_user.id == @user.id %>
         <%= link_to "編集", edit_post_path %>
-        <%= link_to "削除", edit_post_path %>
       <% end %>
     </li>
     <li>雇用形態：<%= post.employment_status %></li>
