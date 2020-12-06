@@ -1,5 +1,5 @@
 <p>編集画面</<p>
-<%= form_for @post,url: "/posts/#{@post.id}/update", html:{method: :patch} do |f| %>
+<%= form_for @post,url: "/posts", html: {method: :post} do |f| %>
   <% # 期間 %>
   <div class="field">
     <%= f.label "期間" %><br>
