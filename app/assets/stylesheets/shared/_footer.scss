@@ -1,8 +1,22 @@
 footer {
   background-color: rgba(0,0,0,0);
   font-size: 14px;
-  height: 54px;
+  height: 53px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+//タブレット表示
+@media screen and (max-width: 1000px){
+  footer{
+    height: 36px;
+  }
+}
+
+//スマートフォン表示
+@media screen and (max-width: 576px){
+  footer{
+    height: 35px;
+  }
 }
