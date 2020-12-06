@@ -3,16 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .top {
-  height: 100vh;
-
   &__bg {
     background-image: url(top-image.jpg);
     background-position: center;
     background-size: cover;
-    top: 0px;
-    left: 0px;
-    max-width: 1920px;
-    height: 100vh;
 
     &__cover {
       height: 100%;
@@ -20,9 +14,63 @@
     }
   }
 
+  &__inner {
+    padding: 0 171px;
+
+    @include tab-layout {
+      padding: 0 82px;
+    }
+
+    @include sp-layout {
+      padding: 0 50px;
+    }
+  }
+
+  &__title {
+    padding-top: 80px;
+    margin-bottom: 76px;
+
+    @include tab-layout {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    @include sp-layout {
+      padding-top: 50px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    p {
+      font-size: 20px;
+
+      @include sp-layout {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__siteTitle {
+    font-size: 75px;
+    color: #404040;
+
+    @include sp-layout {
+      font-size: 50px;
+    }
+  }
+
   &__img {
-    height: 352px;
-    margin-bottom: 75px;
+    height: 452px;
+    margin-bottom: 100px;
+    border: 1px solid #707070;
+
+    @include tab-layout {
+      margin-bottom: 50px;
+    }
+
+    @include sp-layout {
+      margin-bottom: 50px;
+    }
 
     img {
       width: 100%;
@@ -30,42 +78,45 @@
     }
   }
 
-  &__inner {
-    padding: 80px 241px 0;
-  }
-
-  &__title {
-    margin-bottom: 55px;
-  }
-
-  &__siteTitle {
-    color: var(--unnamed-color-404040);
-    text-align: left;
-    font-size: 30px;
-    letter-spacing: 0px;
-    color: #404040;
-    opacity: 1;
-  }
-
   &__search {
     text-align: center;
+    padding-bottom: 100px;
+
+    @include tab-layout {
+      padding-bottom: 50px;
+    }
 
     &__btn {
       width: 249px;
       height: 79px;
       background-color: #80a0a0;
       border-radius: 43px;
-      font-size: 25px;
-      color: black;
       text-decoration: none;
       border: none;
-      list-style: none;
       cursor: pointer;
+
+      @include tab-layout {
+        width: 190px;
+      }
+
+      @include sp-layout {
+        width: 120px;
+        height: 50px;
+      }
 
       a {
         text-decoration: none;
-        color: black;
+        color: #000000;
         font-size: 25px;
+        font-weight: bold;
+
+        @include tab-layout {
+          font-size: 20px;
+        }
+
+        @include sp-layout {
+          font-size: 16px;
+        }
       }
     }
   }
