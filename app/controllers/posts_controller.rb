@@ -21,8 +21,6 @@ class PostsController < ApplicationController
   def update
     post = Post.find_by(id: params[:id])
     post.update(post_params)
-
-    end
   end
 
   def destroy
