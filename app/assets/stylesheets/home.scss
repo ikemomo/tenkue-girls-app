@@ -87,17 +87,12 @@
     }
 
     &__btn {
-      width: 249px;
+      width: 190px;
       height: 79px;
       background-color: #80a0a0;
       border-radius: 43px;
-      text-decoration: none;
       border: none;
       cursor: pointer;
-
-      @include tab-layout {
-        width: 190px;
-      }
 
       @include sp-layout {
         width: 120px;
@@ -107,12 +102,8 @@
       a {
         text-decoration: none;
         color: #000000;
-        font-size: 25px;
+        font-size: 20px;
         font-weight: bold;
-
-        @include tab-layout {
-          font-size: 20px;
-        }
 
         @include sp-layout {
           font-size: 16px;
