@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :follow, :follower]
 
   def index
-    @q = User.ransack(params[:q])
+    @q = User.order(created_at: :desc).ransack(params[:q])
     @users = @q.result(distinct: true)
   end
 
