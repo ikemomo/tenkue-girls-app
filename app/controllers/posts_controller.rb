@@ -19,11 +19,9 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by(id: params[:id])
-    if @post.update_attributes(post_params)
-      redirect_to user_path(@post.user.id)
-    else
-      render :edit
+    post = Post.find_by(id: params[:id])
+    post.update(post_params)
+
     end
   end
 
