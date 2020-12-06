@@ -1,28 +1,16 @@
 <h1>編集画面</<h1>
-  <ul>
-    <li>
-      期間：<%= @post.start_at %> ~ <%= @post.end_at %>
+<%= form_for @post do |f| %>
+<% # 期間 %>
+<div class="field">
+  <%= f.label "期間" %><br>
+  <%= @post.f.date_field :start_at, autocomplete: "start_at" %>
+  ~
+  <%= @post.f.date_field :end_at, autocomplete: "end_at" %>
+</div>
+<p></p>
 
-    </li>
-    <li>雇用形態：<%= @post.employment_status %></li>
-    <li>婚姻歴：<%= @post.marriage %></li>
-    <li>育児状況：<%= @post.childcare %></li>
-    <% unless @post.child.nil? %>
-      <li>子供：<%= @post.child %>人</li>
-    <% end %>
-    <li>
-      介護状況：
-      <% if @post.care == true %>
-        介護あり
-      <% else %>
-        介護なし
-      <% end %>
-    </li>
-    <% unless @post.content == "" %>
-      <li>コメント：<%= @post.content %></li>
-    <% end %>
-  </ul>
-
-  <%# 保存ボタン %>
-
-    <%= link_to "保存", edit_post_path %>
+  <% # 保存ボタン %>
+  <div class="actions">
+    <%= f.submit "保存" %>
+  </div>
+<% end %>

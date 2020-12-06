@@ -24,6 +24,10 @@ class PostsController < ApplicationController
       redirect_to user_path(@post.user.id)
     else
       render :edit
+    end
+  end
+
+  def destroy
   end
 
   private
