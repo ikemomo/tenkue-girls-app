@@ -21,6 +21,11 @@ class PostsController < ApplicationController
   def update
     post = Post.find_by(id: params[:id])
     post.update(post_params)
+    if @post.update
+      redirect_to ("/posts/show")
+    else
+      render ("/posts/edit")
+    end
   end
 
   def destroy
