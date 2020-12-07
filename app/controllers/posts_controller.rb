@@ -21,12 +21,13 @@ class PostsController < ApplicationController
   def update
     post = Post.find_by(id: params[:id])
     post.update!(post_params)
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user.id),notice: "情報を更新しました。"
   end
 
   def destroy
     post = Post.find_by(id: params[:id])
     post.destroy
+    redirect_to user_path(current_user.id),notice: "情報を削除しました。"
   end
 
   private
