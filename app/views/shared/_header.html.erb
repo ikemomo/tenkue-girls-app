@@ -1,13 +1,74 @@
 <header>
-    <%= link_to "サイト名", root_path %>
-    <% if user_signed_in? %>  
-      <% # ログインしている時 %>
-      <%= link_to "mypage", user_path(current_user.id) %>
-      <%= link_to "log out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <% # ログインしていない時 %>
-      <%= link_to "sign up", new_user_registration_path %>
-      <%= link_to "log in", user_session_path %>
-      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-    <% end %>
+  <div class = "full">
+    <div class = "header-container">
+      <%= link_to "サイト名", root_path, class: "logo" %>      
+      <%= link_to "サイト名", root_path, class: "sp-logo" %>
+      <div class = "header-items">
+        <% if user_signed_in? %>
+          <%# ログインしている時 %>
+          <%= link_to "mypage", user_path(current_user.id), class: "header-item" %>
+          <%= link_to "log out", destroy_user_session_path, method: :delete, class: "header-item" %>
+        <% else %>
+          <%# ログインしていない時 %>
+          <%= link_to "sign up", new_user_registration_path, class: "header-item" %>
+          <%= link_to "log in", user_session_path, class: "header-item" %>
+          <%= link_to 'guest', users_guest_sign_in_path, method: :post, class: "header-item" %>
+        <% end %>
+      </div>
+      <nav>
+        <% if user_signed_in? %>
+          <%# ログインしている時 %>
+          <%= link_to "mypage", user_path(current_user.id), class: "nav-item" %>
+          <%= link_to "log out", destroy_user_session_path, method: :delete, class: "nav-item" %>
+        <% else %>
+          <%# ログインしていない時 %>
+          <%= link_to "sign up", new_user_registration_path, class: "nav-item" %>
+          <%= link_to "log in", user_session_path, class: "nav-item" %>
+          <%= link_to 'guest', users_guest_sign_in_path, method: :post, class: "nav-item" %>
+        <% end %>
+        <a class = "close-btn">close</a>
+      </nav>
+    </div>
+    
+    <div class = "humberger-menu open" data-role="page">
+      <span class = "inner_line"></span>
+      <span class = "inner_line"></span>
+      <span class = "inner_line"></span>
+    </div>
+  </div>
 </header>
+
+<script>
+  // スマートフォンにおけるメニュー表示
+  $(function() {
+      // ハンバーガーメニュー
+      $('.humberger-menu').click(function() {
+          if($(this).hasClass("open")){
+              $(this).removeClass("open");
+              $('nav').css('visibility','visible');
+              $('.sp-logo').css('color','#F0E0E0')
+              $('.full').addClass("menu-open");
+              $('.inner_line').css('background-color','#F0E0E0')
+              $('.inner_line').addClass("toggle");
+          }else{
+              $(this).removeClass("open");
+              $('nav').css('visibility','hidden');
+              $('.full').removeClass("menu-open");
+              $('.sp-logo').css('color','#404040')
+              $('.inner_line').css('background-color','#404040')
+              $(this).addClass("open");
+              $('.inner_line').removeClass("toggle");
+          }
+      });
+
+      // ハンバーガーメニューの中のクローズボタン
+      $('.close-btn').click(function() {
+        $('.humberger-menu').addClass("open");
+        $('nav').css('visibility','hidden');
+        $('.full').removeClass("menu-open");
+        $('.sp-logo').css('color','#404040');
+        $('.inner_line').css('background-color','#404040')
+        $('.inner_line').removeClass("toggle");
+      });
+  });
+</script>
