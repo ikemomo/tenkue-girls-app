@@ -10,9 +10,9 @@
   </p>
   <p>
     <%= f.label :engineer_history, "エンジニア歴" %>
-    <%= f.radio_button :engineer_history_eq, ' ', {:checked => true} %>
+    <%= f.radio_button :employment_status_eq, ' ', {:checked => true} %>
     <span>指定なし</span>
-    <%= f.radio_button :engineer_history_eq, '未経験' %>
+    <%= f.radio_button :engineer_history_lteq, 0 %>
     <span>未経験</span>
     <%= f.radio_button :engineer_history_lteq, 1 %>
     <span>〜１年</span>
@@ -83,9 +83,6 @@
       <%= f.radio_button :care_eq, true %>
       <span>介護あり</span>
   </p>
-
-
-  
   <%= f.submit "検索" %>
 <% end %>
 
