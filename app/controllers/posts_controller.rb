@@ -15,17 +15,17 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     @post.update!(post_params)
     redirect_to user_path(current_user.id),notice: "情報を更新しました。"
   end
 
   def destroy
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(current_user.id),notice: "情報を削除しました。"
   end
