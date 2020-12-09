@@ -34,4 +34,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:start_at, :end_at, :marriage, :child, :childcare, :care, :employment_status, :content).merge(user_id: current_user.id)
   end
+
+  private
+  def set_post
+  end
 end
