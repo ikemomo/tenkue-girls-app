@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to user_path(@post.user.id)
+      redirect_to user_path(@post.user.id), notice: "投稿しました"
     else
       render :new
     end
