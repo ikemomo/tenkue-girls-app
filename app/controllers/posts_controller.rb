@@ -23,7 +23,9 @@ class PostsController < ApplicationController
     if @post.update
       redirect_to user_path(current_user.id), notice: "投稿を編集しました。"
     else
-      render :edit, alert: "投稿編集に失敗しました。"
+      flash.now[:alert] = "投稿編集に失敗しました。"
+      render :edit
+    end
   end
 
   def destroy
@@ -31,7 +33,9 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to user_path(current_user.id),notice: "投稿を削除しました。"
     else
-      render :destroy, alert: "投稿削除に失敗しました。"
+       flash.now[:alert] = "投稿削除に失敗しました。"
+       render :destroy
+    end
   end
 
   private
