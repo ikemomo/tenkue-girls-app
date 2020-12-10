@@ -20,14 +20,18 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update!(post_params)
-    redirect_to user_path(current_user.id),notice: "投稿を編集しました。"
+    if @post.update
+      redirect_to user_path(current_user.id), notice: "投稿を編集しました。"
+    else
+      render :edit, alert: "投稿編集に失敗しました。"
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to user_path(current_user.id),notice: "投稿を削除しました。"
+    if @post.destroy
+      redirect_to user_path(current_user.id),notice: "投稿を削除しました。"
+    else
+      render :destroy, alert: "投稿削除に失敗しました。"
   end
 
   private
