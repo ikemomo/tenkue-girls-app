@@ -10,9 +10,9 @@
   </head>
   <body>
     <%= render partial: "/shared/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="wrapper">  
+    <div class="wrapper">
+      <%= notice %>
+      <%= alert %>
       <%= yield %>
     </div>
     <%= render partial: "/shared/footer" %>
