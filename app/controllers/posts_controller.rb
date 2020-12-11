@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to user_path(current_user.id), notice: "投稿を編集しました。"
     else
+      flash.now[:alert] = "更新に失敗しました。"
       render :edit
     end
   end
@@ -34,6 +35,7 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to user_path(current_user.id),notice: "投稿を削除しました。"
     else
+      flash.now[:alert] = "削除に失敗しました。"
       render :edit
     end
   end
