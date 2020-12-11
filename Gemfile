@@ -58,6 +58,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -68,3 +69,5 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
 gem 'carrierwave'
+gem 'ransack'
+gem 'kaminari'
