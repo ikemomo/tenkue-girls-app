@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  
+  before_action :set_post, only: [:edit, :update, :destroy]
+
   def new
     @post = Post.new
     @user = User.find(current_user.id)
@@ -16,8 +17,33 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to user_path(current_user.id), notice: "投稿を編集しました。"
+    else
+      flash.now[:alert] = "更新に失敗しました。"
+      render :edit
+    end
+  end
+
+  def destroy
+    if @post.destroy
+      redirect_to user_path(current_user.id), notice: "投稿を削除しました。"
+    else
+      flash.now[:alert] = "削除に失敗しました。"
+      render :edit
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:start_at, :end_at, :marriage, :child, :childcare, :care, :employment_status, :content).merge(user_id: current_user.id)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
