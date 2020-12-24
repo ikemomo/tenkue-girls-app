@@ -1,0 +1,66 @@
+$bg-color: #f5f7f8;
+$cWhite: #ffffff;
+$cGreen: #60b8b8;
+$cMoss: #718181;
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+  background-color: $bg-color;
+  padding-top: 92px;
+}
+
+.board {
+  background-color: $cWhite;
+  width: 454px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px #00000066;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-contents h2 {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.btn-form {
+  width: 366px;
+  height: 48px;
+  margin-top: 36px;
+  margin-bottom: 26px;
+  text-align: center;
+  line-height: 48px;
+  background-color: $cGreen;
+  border-radius: 8px;
+  color: $cWhite;
+}
+
+.form-input {
+  @include form-input;
+}
+
+.form-item {
+  margin-top: 12px;
+}
+
+.form-contents {
+  margin: 30px auto;
+}
+
+.form-links {
+  & a {
+    color: $cMoss;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 5px;
+    &:hover,
+    &:focus,
+    &:visited {
+      color: $cMoss;
+    }
+  }
+}
