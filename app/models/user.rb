@@ -9,7 +9,7 @@ class User < ApplicationRecord
   email_format = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   password_format = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
   validates :name, presence: true
-  validates :email, format: { with: email_format }
+  validates :email, format: { with: email_format }, uniqueness: true
   validates :password, format: { with: password_format }, length: { in: 8..32 }, on: :create
   mount_uploader :image, ImageUploader
 
