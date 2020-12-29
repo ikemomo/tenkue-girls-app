@@ -1,3 +1,85 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.p-users {
+  background-color: $background-color;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+
+  &__search {
+    width: 199px;
+    background-color: $main-color;
+    margin-right: 13.5px;
+    padding: 11px 13.5px;
+
+    label {
+      color: $text-color;
+      font-size: 15px;
+    }
+
+    &__text {
+      border: 0.5px solid #707070;
+      border-radius: 5px;
+      width: 167px;
+      height: 28px;
+    }
+    &__number {
+      width: 52px;
+      height: 28px;
+      border: 0.5px solid #707070;
+      border-radius: 5px;
+    }
+
+    span {
+      color: #718181;
+      font-size: 14px;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 15px;
+
+      li {
+        display: inline-block;
+        &:nth-child(odd) {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__list {
+    width: 802px;
+    background-color: $main-color;
+    padding: 15px;
+
+    a {
+      text-decoration: none;
+    }
+
+    &__item {
+      list-style: none;
+      border-bottom: 1px solid #718181;
+      display: flex;
+      padding: 22px;
+      text-decoration: none;
+      position: relative;
+    }
+
+    &__img {
+      width: 90px;
+      height: 90px;
+      margin-right: 18px;
+      border-radius: 50%;
+    }
+
+    &__text {
+      color: black;
+    }
+  }
+}

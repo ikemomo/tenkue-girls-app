@@ -1,90 +1,138 @@
+
+<section class="p-users">
+<div class="p-users__search">
 <%= search_form_for @q do |f| %>
   <% #ユーザ名検索フォーム%>
-  <%= f.label :name, "ユーザ名" %>
-  <%= f.search_field :name_cont %>
-  
+  <p>
+  <%= f.label :name, "ユーザ名" %><br>
+  <%= f.search_field :name_cont, class: "p-users__search__text"%>
+  </p>
+
   <% #年齢%>
   <p>
-    <%= f.label :age, "年齢" %>
-    <%= f.number_field :age_gteq, min: 0 %>歳
-    〜
-    <%= f.number_field :age_lteq, min: 1 %>歳
+    <i class="fab fa-pagelines"></i><%= f.label :age, "年齢" %><br>
+    <%= f.number_field :age_gteq, min: 0, class: "p-users__search__number"%><span class="p-users__search__number__text">歳〜</span>
+    
+    <%= f.number_field :age_lteq, min: 1, class: "p-users__search__number"%><span>歳</span>
   </p>
 
   <% #エンジニア歴%>
   <p>
-    <%= f.label :engineer_history, "エンジニア歴" %>
-    <%= f.number_field :engineer_history_gteq, min: 0 %>年
-    〜
-    <%= f.number_field :engineer_history_lteq, min: 1 %>年
+    <%= f.label :engineer_history, "エンジニア歴" %><br>
+    <%= f.number_field :engineer_history_gteq, min: 0, class:"p-users__search__number" %><span>年〜</span>
+    <%= f.number_field :engineer_history_lteq, min: 1, class:"p-users__search__number" %><span>年</span>
   </p>
 
+  
   <% #雇用形態%>
-  <p>
-    <%= f.label :employment_status, "雇用形態" %>
+    <%= f.label :employment_status, "雇用形態" %><br>
+    <ul>
+    <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, ' ', {:checked => true} %>
     <span>指定なし</span>
+    </li>
+    <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, '正社員' %>
     <span>正社員</span>
+    </li>
+    <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, '契約社員' %>
     <span>契約社員</span>
+    </li>
+    <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, '業務委託' %>
     <span>業務委託</span>
+    </li>
+    <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, 'フリーランス' %>
     <span>フリーランス</span>
+    </li>
+    <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, 'アルバイト' %>
     <span>アルバイト</span>
+    </li>
+    <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, 'その他' %>
     <span>その他</span>
-  </p>
+    </li>
+    </ul>
+  
 
-  <p>
     <% #婚姻歴 %>
     <%= f.label :marriage, "婚姻歴" %>
+    <ul>
+    <li class="p-users__search__radio">
       <%= f.radio_button :marriage_eq, ' ', {:checked => true} %>
       <span>指定なし</span>
+    </li>
+    <li class="p-users__search__radio">
       <%= f.radio_button :marriage_eq, '未婚' %>
       <span>未婚</span>
+      </li>
+      <li class="p-users__search__radio">
       <%= f.radio_button :marriage_eq, '既婚' %>
       <span>既婚</span>
+      </li>
+     <li class="p-users__search__radio">
       <%= f.radio_button :marriage_eq, '離別' %>
       <span>離別</span>
-  </p>
+      </li>
+    </ul>
 
-  <p>
     <% #育児状況 %>
-    <%= f.label :childcare, "育児状況" %>
+    <%= f.label :childcare, "育児状況" %><br>
+    <ul>
+      <li class="p-users__search__radio">
       <%= f.radio_button :childcare_eq, ' ', {:checked => true} %>
       <span>指定なし</span>
+      </li>
+      <li class="p-users__search__radio">
       <%= f.radio_button :childcare_eq, '子供なし' %>
       <span>子供なし</span>
+      </li>
+      <li class="p-users__search__radio">
       <%= f.radio_button :childcare_eq, '子供あり(育児なし)' %>
       <span>子供あり(育児なし)</span>
+      </li>
+      <li class="p-users__search__radio">
       <%= f.radio_button :childcare_eq, '子供あり(育児あり)' %>
       <span>子供あり（育児あり）</span>
-  </p>
+      </li>
+    </ul>
 
-  <p>
     <% #介護状況 %>
-    <%= f.label :care, "介護状況" %>
+    <%= f.label :care, "介護状況" %><br>
+    <ul>
+    <li class="p-users__search__radio">
       <%= f.radio_button :care_eq, ' ', {:checked => true} %>
       <span>指定なし</span>
+      </li>
+      <li class="p-users__search__radio">
       <%= f.radio_button :care_eq, false %>
       <span>介護なし</span>
+      </li>
+      <li class="p-users__search__radio">
       <%= f.radio_button :care_eq, true %>
       <span>介護あり</span>
-  </p>
-  <%= f.submit "検索" %>
-<% end %>
+      </li>
+      </ul>
 
+  <button class="c-button__search"><%= f.submit "検索" %></button>
+<% end %>
+</div>
+
+<div class="p-users__list">
 <ul>
   <% @users.each do |user| %>
     <%= link_to user_path(user.id) do %>
-      <li class="user_index">
+      <li class="p-users__list__item">
+        <div>
         <%# プロフィール画像 %>
-        <%= image_tag user.image.url, width: 50 %>
+        <%= image_tag user.image.url, class:"p-users__list__img" %>
+        </div>
+        <div class="p-users__list__text">
         <%# ユーザー名 %>
-        ユーザー名：<%= user.name %><br>
+        <%= user.name %><br>
         <%# 年齢 %>
         <% unless user.birthday.nil? %>
           年齢：<%= age(user) %>歳
@@ -96,7 +144,7 @@
         <% unless user.posts.count == 0 %>
           <% @post = user.posts.last %>
           <%# 雇用形態 %>
-          雇用形態：<%= @post.employment_status %>
+          雇用形態：<%= @post.employment_status %><br>
         
           <%# 婚姻歴 %>
           婚姻歴：<%= @post.marriage %>
@@ -106,10 +154,11 @@
         
           <%# 介護状況 %>
           <% if @post.care == true %>
+          介護状況：
             介護あり
           <% else %>
-            介護なし
-          <% end %>
+          介護状況：介護なし
+          <% end %><br>
         
           <%# コメント %>
           <% unless @post.content == "" %>
@@ -117,18 +166,23 @@
           <% end %>
         <% end %>
         
+
+        
         <%# フォローボタン %>
         <% if user_signed_in? %>  
           <% if current_user != user %>
             <% if user.followed_by?(current_user) %>
-              <P><%= link_to "フォロー中", user_relationships_path(user.id), method: :delete %></p>
+              <P><%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:"c-button__green"%></p>
             <% else %>
-              <P><%= link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
+              <P><%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"c-button__white" %></p>
             <% end %>
           <% end %>
         <% end %>
+        </div>
       </li>
     <% end %>
   <% end %>
 </ol>
 <%= paginate @users %>
+</div>
+</section>
