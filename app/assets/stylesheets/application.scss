@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "shared/reset";
 @import "shared/mixin";
 @import "shared/header";
@@ -6,3 +7,17 @@
 @import "home.scss";
 @import "users.scss";
 @import "login.scss";
+=======
+@import "foundation/reset";
+@import "foundation/base";
+@import "foundation/mixin";
+@import "foundation/variable";
+@import "layout/header";
+@import "layout/footer";
+@import "object/component/button";
+@import "object/project/home";
+@import "object/project/posts";
+@import "object/project/relationships";
+@import "object/project/users";
+@import "object/utility/margin";
+>>>>>>> e3ea674b376be967ff1f49ee01765e6aaa75f2db
