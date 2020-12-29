@@ -4,13 +4,13 @@
 <%= search_form_for @q do |f| %>
   <% #ユーザ名検索フォーム%>
   <p>
-  <%= f.label :name, "ユーザ名" %><br>
+  <i class="fas fa-users"></i> <%= f.label :name, "ユーザ名" %><br>
   <%= f.search_field :name_cont, class: "p-users__search__text"%>
   </p>
 
   <% #年齢%>
   <p>
-    <i class="fab fa-pagelines"></i><%= f.label :age, "年齢" %><br>
+    <i class="fab fa-pagelines"></i> <%= f.label :age, "年齢" %><br>
     <%= f.number_field :age_gteq, min: 0, class: "p-users__search__number"%><span class="p-users__search__number__text">歳〜</span>
     
     <%= f.number_field :age_lteq, min: 1, class: "p-users__search__number"%><span>歳</span>
@@ -18,14 +18,14 @@
 
   <% #エンジニア歴%>
   <p>
-    <%= f.label :engineer_history, "エンジニア歴" %><br>
+    <i class="fas fa-code"></i> <%= f.label :engineer_history, "エンジニア歴" %><br>
     <%= f.number_field :engineer_history_gteq, min: 0, class:"p-users__search__number" %><span>年〜</span>
     <%= f.number_field :engineer_history_lteq, min: 1, class:"p-users__search__number" %><span>年</span>
   </p>
 
   
   <% #雇用形態%>
-    <%= f.label :employment_status, "雇用形態" %><br>
+    <i class="fas fa-briefcase"></i> <%= f.label :employment_status, "雇用形態" %><br>
     <ul>
     <li class="p-users__search__radio">
     <%= f.radio_button :employment_status_eq, ' ', {:checked => true} %>
@@ -59,7 +59,7 @@
   
 
     <% #婚姻歴 %>
-    <%= f.label :marriage, "婚姻歴" %>
+    <i class="fas fa-heart"></i> <%= f.label :marriage, "婚姻歴" %>
     <ul>
     <li class="p-users__search__radio">
       <%= f.radio_button :marriage_eq, ' ', {:checked => true} %>
@@ -80,7 +80,7 @@
     </ul>
 
     <% #育児状況 %>
-    <%= f.label :childcare, "育児状況" %><br>
+    <i class="fas fa-child"></i> <%= f.label :childcare, "育児状況" %>
     <ul>
       <li class="p-users__search__radio">
       <%= f.radio_button :childcare_eq, ' ', {:checked => true} %>
@@ -101,7 +101,7 @@
     </ul>
 
     <% #介護状況 %>
-    <%= f.label :care, "介護状況" %><br>
+    <i class="fas fa-bed"></i> <%= f.label :care, "介護状況" %><br>
     <ul>
     <li class="p-users__search__radio">
       <%= f.radio_button :care_eq, ' ', {:checked => true} %>
