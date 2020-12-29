@@ -1,23 +1,23 @@
-<div class="bg">
-  <div class="board">
-    <div class="form-contents">
+<div class="u-form-bg">
+  <div class="p-form-board">
+    <div class="p-form-board__contents">
       <h2>パスワード再設定</h2>
 
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field form-item">
+        <div class="field p-form-board__contents__item">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "p-form-board__contents__item__text" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "送信", class:"btn-form" %>
+          <%= f.submit "送信", class:"c-btn-form" %>
         </div>
       <% end %>
 
-      <div class="form-links">
-        <%= render "devise/shared/links", class: "form-link" %>
+      <div class="p-form-board__contents__links">
+        <%= render "devise/shared/links" %>
       </div>
 
     </div>

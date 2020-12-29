@@ -1,19 +1,19 @@
-<div class="bg">
-  <div class="board">
-    <div class="form-contents">
+<div class="u-form-bg">
+  <div class="p-form-board">
+    <div class="p-form-board__contents">
       <h2>ログイン</h2>
 
       <% # メールアドレス %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field form-item">
+        <div class="field p-form-board__contents__item">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "p-form-board__contents__item__text" %>
         </div>
 
         <% # パスワード %>
-        <div class="field form-item">
+        <div class="field p-form-board__contents__item">
           <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-input" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "p-form-board__contents__item__text" %>
         </div>
 
         <% # ログイン情報を記憶しても良いですか？ %>
@@ -26,12 +26,12 @@
 
         <% # ログインボタン %>
         <div class="actions">
-          <%= f.submit "ログイン", class:"btn-form" %>
+          <%= f.submit "ログイン", class:"c-btn-form" %>
         </div>
       <% end %>
       
       <% # 「新規登録」「パスワードを忘れた方はこちら」%>
-        <div class="form-links">
+        <div class="p-form-board__contents__links">
           <%= render "devise/shared/links" %>
         </div>
 

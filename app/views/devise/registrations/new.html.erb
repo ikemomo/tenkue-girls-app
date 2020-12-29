@@ -1,44 +1,44 @@
-<div class="bg">
-  <div class="board">
-    <div class="form-contents">
+<div class="u-form-bg">
+  <div class="p-form-board">
+    <div class="p-form-board__contents">
         <h2>新規登録</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <% # ユーザー名 %>
-        <div class="field form-item">
+        <div class="field p-form-board__contents__item">
           <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-input" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "p-form-board__contents__item__text" %>
         </div>
 
         <% # メール %>
-        <div class="field form-item">
+        <div class="field p-form-board__contents__item">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autocomplete: "email", class: "form-input" %>
+          <%= f.email_field :email, autocomplete: "email", class: "p-form-board__contents__item__text" %>
         </div>
 
         <% # パスワード %>
-        <div class="field form-item">
+        <div class="field p-form-board__contents__item">
           <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "p-form-board__contents__item__text" %><br />
           <small>パスワードは8文字以上で入力してください</small>
         </div>
 
         <% # パスワード(確認用) %>
-        <div class="field form-item">
+        <div class="field p-form-board__contents__item">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "p-form-board__contents__item__text" %>
         </div>
 
         <% # 新規登録ボタン %>
         <div class="actions">
-          <%= f.submit "新規登録", class:"btn-form" %>
+          <%= f.submit "新規登録", class:"c-btn-form" %>
         </div>
       <% end %>
 
-      <div class="form-links">
-        <%= render "devise/shared/links", class: "form-link" %>
+      <div class="p-form-board__contents__links">
+        <%= render "devise/shared/links" %>
       </div>
 
     </div>
