@@ -1,3 +1,10 @@
+.u-margin-right {
+  margin-right: 17px;
+
+  @include sp-layout {
+    margin-right: 15px;
+  }
+}
 //ログイン・新規登録・パスワード再設定画面の背景
 .u-form-bg {
   width: 100%;
