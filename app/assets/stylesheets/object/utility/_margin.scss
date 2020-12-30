@@ -1,0 +1,7 @@
+.u-margin-right {
+  margin-right: 17px;
+
+  @include sp-layout {
+    margin-right: 15px;
+  }
+}

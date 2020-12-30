@@ -122,7 +122,7 @@
 </div>
 
 <div class="p-users__list">
-<ul>
+  <ul>
   <% @users.each do |user| %>
     <%= link_to user_path(user.id) do %>
       <li class="p-users__list__item">
@@ -130,9 +130,12 @@
         <%# プロフィール画像 %>
         <%= image_tag user.image.url, class:"p-users__list__img" %>
         </div>
-        <div class="p-users__list__text">
+        <div>
         <%# ユーザー名 %>
-        <%= user.name %><br>
+        <p class="p-users__list__name">
+        <%= user.name %>
+        </p>
+        <p class="p-users__list__profile">
         <%# 年齢 %>
         <% unless user.birthday.nil? %>
           年齢：<%= age(user) %>歳
@@ -144,26 +147,33 @@
         <% unless user.posts.count == 0 %>
           <% @post = user.posts.last %>
           <%# 雇用形態 %>
-          雇用形態：<%= @post.employment_status %><br>
+          <span class="u-margin-right">
+          雇用形態：<%= @post.employment_status %></span><br>
         
           <%# 婚姻歴 %>
-          婚姻歴：<%= @post.marriage %>
+          <span class="u-margin-right">
+          婚姻歴：<%= @post.marriage %></span>
         
           <%# 育児状況 %>
-          育児状況：<%= @post.childcare %>
+          <span class="u-margin-right">
+          育児状況：<%= @post.childcare %></span>
         
           <%# 介護状況 %>
+           <span class="u-margin-right">
           <% if @post.care == true %>
           介護状況：
             介護あり
           <% else %>
           介護状況：介護なし
-          <% end %><br>
-        
+          <% end %>
+          </span>
+          </p>
+          <p class="p-users__list__comment">
           <%# コメント %>
           <% unless @post.content == "" %>
             コメント：<%= @post.content %>
           <% end %>
+          </p>
         <% end %>
         
 
@@ -182,7 +192,18 @@
       </li>
     <% end %>
   <% end %>
-</ol>
-<%= paginate @users %>
+  </ol>
 </div>
+<%= paginate @users %>
+<button class="c-button__users__search"><i class="fas fa-search"></i></button>
 </section>
+
+<script>
+  $(function(){
+    $('.c-button__users__search').click(function(){
+      $('.p-users__search').addClass("open");
+      $('.p-users__list').addClass("close");
+    });
+  });
+</script>
+

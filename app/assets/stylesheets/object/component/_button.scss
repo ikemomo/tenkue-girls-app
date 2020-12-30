@@ -15,6 +15,14 @@
   position: absolute;
   top: 22px;
   right: 0;
+
+  @include sp-layout {
+    width: 125px;
+    height: 32px;
+    font-size: 13px;
+    padding: 5px 20px;
+    text-align: center;
+  }
 }
 
 .c-button__white {
@@ -28,4 +36,28 @@
   position: absolute;
   top: 22px;
   right: 0;
+
+  @include sp-layout {
+    width: 125px;
+    height: 32px;
+    font-size: 13px;
+    padding: 5px 20px;
+  }
+}
+
+.c-button__users__search {
+  display: none;
+
+  @include sp-layout {
+    display: inline-block;
+    background-color: #e68989;
+    color: white;
+    height: 54px;
+    width: 54px;
+    border-radius: 70%;
+    padding: 18px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
 }
