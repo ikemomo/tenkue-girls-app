@@ -1,4 +1,4 @@
-// ユーザー詳細
+// ユーザー詳細ページとマイページ
 
 .p-user-container {
   display: flex;
@@ -9,6 +9,7 @@
     list-style: none;
   }
 
+  //プロフィール部分
   &__main {
     @include container-white;
     position: relative;
@@ -84,6 +85,7 @@
     }
   }
 
+  //経歴一覧
   &__career {
     @include container-white;
     margin-top: 16px;

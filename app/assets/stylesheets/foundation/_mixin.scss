@@ -10,7 +10,7 @@
   font-weight: $fw-mid;
   cursor: pointer;
 
-  @include tab-layout {
+  @media screen and (max-width: 576px) {
     height: 32px;
     font-size: 13px;
     line-height: 32px;
@@ -23,7 +23,7 @@
   margin: 0 15vw;
   padding: 33px 5vw;
 
-  @include sp-layout {
+  @media screen and (max-width: 576px) {
     margin: 0 5vw;
     padding: 16px 3vw;
   }
