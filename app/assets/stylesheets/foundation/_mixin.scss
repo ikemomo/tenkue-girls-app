@@ -1,9 +1,24 @@
 @mixin btn {
+  display: block;
   height: 36px;
-  line-height: 32px;
+  line-height: 36px;
   border-radius: 22px;
   text-align: center;
   text-decoration: none;
   padding-right: 16px;
   padding-left: 16px;
+  font-weight: $fw-mid;
+  cursor: pointer;
+}
+
+@mixin container-white {
+  background-color: $main-color;
+  border-radius: 5px;
+  margin: 0 15vw;
+  padding: 33px 5vw;
+
+  @include sp-layout {
+    margin: 0 5vw;
+    padding: 16px 3vw;
+  }
 }

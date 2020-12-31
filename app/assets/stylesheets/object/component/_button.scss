@@ -65,6 +65,7 @@
     bottom: 20px;
   }
 }
+
 //ログイン・新規登録・パスワード再設定画面のボタン
 .c-btn-form {
   display: inline-block;
@@ -79,5 +80,76 @@
 
   &:hover {
     background-color: $btn-hover-color;
+  }
+}
+
+//ユーザー詳細ページ・マイページのボタン
+.c-btn {
+  //フォローボタンと、ユーザー情報編集ボタン
+  &__follow,
+  &__edit {
+    @include btn;
+    position: absolute;
+    top: 33px;
+    right: 5vw;
+    background-color: $main-color;
+    border: 2px solid $accent-color;
+    line-height: 32px;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: $accent-color;
+    }
+    &:hover {
+      color: $main-color;
+      background-color: $accent-color;
+    }
+  }
+
+  //フォロー中のボタン。ホバー時、「フォロー解除」ボタンになる。
+  &__following {
+    position: absolute;
+    top: 33px;
+    right: 5vw;
+
+    &--normal,
+    &--hover {
+      @include btn;
+      background-color: $accent-color;
+      color: $main-color;
+      &:link,
+      &:visited,
+      &:active {
+        color: $main-color;
+      }
+    }
+
+    &--hover {
+      display: none;
+    }
+
+    &:hover &--normal {
+      display: none;
+    }
+
+    &:hover &--hover {
+      display: inline-block;
+      background-color: $caution-color;
+    }
+  }
+
+  //経歴の新規追加ボタン
+  &__addCareer {
+    @include btn;
+    position: absolute;
+    top: 32px;
+    right: 5vw;
+    background-color: $accent-color;
+    color: $main-color;
+
+    &:hover {
+      background-color: $btn-hover-color;
+    }
   }
 }

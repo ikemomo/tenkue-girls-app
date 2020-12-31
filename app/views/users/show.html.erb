@@ -2,8 +2,10 @@
   <div class ="p-user-container">
     <div class = "p-user-container__main">
       <div class = "p-user-container__main__profile">
-        <%# プロフィール画像 %>
-        <%= image_tag @user.image.url %>
+         <div class = "p-user-container__main__profile__photo">
+          <%# プロフィール画像 %>
+          <%= image_tag @user.image.url %>
+        </div>
 
         <div class = "p-user-container__main__profile__detail">
           <%# ユーザーネーム %>
@@ -49,22 +51,28 @@
 
                   <%# フォロー数 %>
                   <p class = "p-user-container__main__profile__detail__followers">
-                    <%= link_to @user.followings.count, user_follow_path(@user.id) %>フォロー中&nbsp;
-                    <%= link_to @user.followers.count, user_follower_path(@user.id) %>フォロワー
+                    <%= link_to @user.followings.count, user_follow_path(@user.id), class: "p-user-container__main__profile__detail__followers__count" %>フォロー中&nbsp&nbsp&nbsp;
+                    <%= link_to @user.followers.count, user_follower_path(@user.id), class: "p-user-container__main__profile__detail__followers__count" %>フォロワー
                   </p>
                 <% end %>
               </ul>
           </div>
         </div>
       </div>
-      <span class="p-user-container__main__btn">
+      <span>
         <%# フォローボタン %>
         <% if current_user != @user %>
           <% if @user.followed_by?(current_user) %>
-            <P><%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class:"p-user-container__main__btn__following" %></p>
+            <span class="c-btn__following">
+              <P><%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class:"c-btn__following--normal" %></p>
+              <P><%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class:"c-btn__following--hover" %></p>
+            </span>
           <% else %>
-            <P><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+            <P><%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class:"c-btn__follow" %></p>
           <% end %>
+        <% end %>
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <%= link_to "ユーザ情報編集", edit_user_registration_path, class:"c-btn__edit" %>
         <% end %>
       </span>
     </div>
@@ -73,8 +81,7 @@
       <div class = "p-user-container__career__contents">
         <%# 新規追加 %>
         <% if user_signed_in? && current_user.id == @user.id %>
-          <%= link_to "新規追加", new_post_path %>
-          <%= link_to "ユーザ情報編集", edit_user_registration_path %>
+          <%= link_to "＋ 新規追加", new_post_path,  class:"c-btn__addCareer" %>
         <% end %>
 
         <%# 投稿一覧 %>
@@ -82,11 +89,16 @@
           <hr>
           <ul>
             <li>
-              期間：<%= post.start_at %> ~ <%= post.end_at %>
+              <%# 期間 %>
+              <i class="fas fa-map-marker-alt fa-2x p-user-container__career__contents__fas"></i>
+              <span class="p-user-container__career__contents__period">
+                <%= post.start_at %> ~ <%= post.end_at %>
+              </span>
+              
               <%# 編集と削除ボタン %>
               <% if user_signed_in? && current_user.id == @user.id %>
-                <%= link_to "編集", edit_post_path(@post) %>
-                <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}%>
+                  <%= link_to "編集", edit_post_path(@post), class: "p-user-container__career__contents__edit" %>
+                  <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "p-user-container__career__contents__delete" %>
               <% end %>
             </li>
             <li>雇用形態：<%= post.employment_status %></li>
@@ -104,7 +116,7 @@
               <% end %>
             </li>
             <% unless post.content == "" %>
-              <li>コメント：<%= post.content %></li>
+              <li class=""><%= post.content %></li>
             <% end %>
           </ul>
           <hr>
