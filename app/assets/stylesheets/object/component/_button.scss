@@ -1,3 +1,70 @@
+//トップページ検索ボタン
+.c-button__search {
+  background-color: $accent-color;
+  width: 175px;
+  height: 36px;
+  border-radius: 22px;
+  color: $main-color;
+}
+
+//フォロー中ボタン
+.c-button__green {
+  background-color: $accent-color;
+  width: 152px;
+  height: 36px;
+  border-radius: 22px;
+  color: $main-color;
+  padding: 5px 35px;
+  position: absolute;
+  top: 22px;
+  right: 0;
+
+  @include sp-layout {
+    width: 125px;
+    height: 32px;
+    font-size: 13px;
+    padding: 5px 20px;
+    text-align: center;
+  }
+}
+//フォローするボタン
+.c-button__white {
+  background-color: $main-color;
+  width: 152px;
+  height: 36px;
+  border-radius: 22px;
+  border: 2px solid $accent-color;
+  color: $accent-color;
+  padding: 5px 25px;
+  position: absolute;
+  top: 22px;
+  right: 0;
+
+  @include sp-layout {
+    width: 125px;
+    height: 32px;
+    font-size: 13px;
+    padding: 5px 20px;
+  }
+}
+
+//sp版ユーザー検索ボタン
+.c-button__users__search {
+  display: none;
+
+  @include sp-layout {
+    display: inline-block;
+    background-color: #e68989;
+    color: white;
+    height: 54px;
+    width: 54px;
+    border-radius: 70%;
+    padding: 18px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+}
 //ログイン・新規登録・パスワード再設定画面のボタン
 .c-btn-form {
   display: inline-block;
