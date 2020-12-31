@@ -1,99 +1,115 @@
-<%# ユーザーネーム %>
-<h3><%= @user.name %></h3>
-<div class="post-show">
+<div class = "u-user-bg">
+  <div class ="p-user-container">
+    <div class = "p-user-container__main">
+      <div class = "p-user-container__main__profile">
+        <%# プロフィール画像 %>
+        <%= image_tag @user.image.url %>
 
-  <%# フォローボタン %>
-  <% if current_user != @user %>
-    <% if @user.followed_by?(current_user) %>
-      <P><%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete %></p>
-    <% else %>
-      <P><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
-    <% end %>
-  <% end %>
+        <div class = "p-user-container__main__profile__detail">
+          <%# ユーザーネーム %>
+          <h3><%= @user.name %></h3>
 
-  <ul>
-    <%# プロフィール画像 %>
-    <%= image_tag @user.image.url, width: 100 %>
+          <div class="post-show">          
+              <ul>
+                <%# 年齢 %>
+                <% unless @user.birthday.nil? %>
+                  <li>年齢：<%= (Date.today.strftime('%Y%m%d').to_i - @user.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳</li>
+                <% end %>
 
-    <%# 年齢 %>
-    <% unless @user.birthday.nil? %>
-      <li>年齢：<%= (Date.today.strftime('%Y%m%d').to_i - @user.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳</li>
-    <% end %>
+                <%# エンジニア歴 %>
+                <% unless @user.engineer_start_at.nil? %>
+                  <li>エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - @user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目</li>
+                <% end %>
+                <% unless @user.posts.count == 0 %>
+                  <%# 雇用形態 %>
+                  <li>雇用形態：<%= @post.employment_status %></li>
 
-    <%# エンジニア歴 %>
-    <% unless @user.engineer_start_at.nil? %>
-      <li>エンジニア歴：<%= (Date.today.strftime('%Y%m%d').to_i - @user.engineer_start_at.strftime('%Y%m%d').to_i) / 10000  %>年目</li>
-    <% end %>
-    <% unless @user.posts.count == 0 %>
-      <%# 雇用形態 %>
-      <li>雇用形態：<%= @post.employment_status %></li>
+                  <%# 婚姻歴 %>
+                  <% if @user.marriage %>
+                    <li>婚姻歴：<%= @user.marriage %></li>
+                  <% end %>
 
-      <%# 婚姻歴 %>
-      <% if @user.marriage %>
-        <li>婚姻歴：<%= @user.marriage %></li>
-      <% end %>
+                  <%# 育児状況 %>
+                  <li>育児状況：<%= @post.childcare %></li>
 
-      <%# 育児状況 %>
-      <li>育児状況：<%= @post.childcare %></li>
+                  <%# 介護状況 %>
+                  <li>
+                    介護状況：
+                    <% if @post.care == true %>
+                      介護あり
+                    <% else %>
+                      介護なし
+                    <% end %>
+                  </li>
 
-      <%# 介護状況 %>
-      <li>
-        介護状況：
-        <% if @post.care == true %>
-          介護あり
-        <% else %>
-          介護なし
+                  <%# コメント %>
+                  <% unless @post.content == "" %>
+                    <li><%= @post.content %></li>
+                  <% end %>
+
+                  <%# フォロー数 %>
+                  <p class = "p-user-container__main__profile__detail__followers">
+                    <%= link_to @user.followings.count, user_follow_path(@user.id) %>フォロー中&nbsp;
+                    <%= link_to @user.followers.count, user_follower_path(@user.id) %>フォロワー
+                  </p>
+                <% end %>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <span class="p-user-container__main__btn">
+        <%# フォローボタン %>
+        <% if current_user != @user %>
+          <% if @user.followed_by?(current_user) %>
+            <P><%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class:"p-user-container__main__btn__following" %></p>
+          <% else %>
+            <P><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+          <% end %>
         <% end %>
-      </li>
+      </span>
+    </div>
 
-      <%# コメント %>
-      <% unless @post.content == "" %>
-        <li><%= @post.content %></li>
-      <% end %>
-    <% end %>
+    <div class = "p-user-container__career">
+      <div class = "p-user-container__career__contents">
+        <%# 新規追加 %>
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <%= link_to "新規追加", new_post_path %>
+          <%= link_to "ユーザ情報編集", edit_user_registration_path %>
+        <% end %>
 
-    <%# フォロー数 %>
-    <p>
-      <%= link_to @user.followings.count, user_follow_path(@user.id) %>フォロー中
-      <%= link_to @user.followers.count, user_follower_path(@user.id) %>フォロワー
-    </p>
-  </ul>
+        <%# 投稿一覧 %>
+        <% @posts.each do |post| %>
+          <hr>
+          <ul>
+            <li>
+              期間：<%= post.start_at %> ~ <%= post.end_at %>
+              <%# 編集と削除ボタン %>
+              <% if user_signed_in? && current_user.id == @user.id %>
+                <%= link_to "編集", edit_post_path(@post) %>
+                <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}%>
+              <% end %>
+            </li>
+            <li>雇用形態：<%= post.employment_status %></li>
+            <li>婚姻歴：<%= post.marriage %></li>
+            <li>育児状況：<%= post.childcare %></li>
+            <% unless post.child.nil? %>
+              <li>子供：<%= post.child %>人</li>
+            <% end %>
+            <li>
+              介護状況：
+              <% if post.care == true %>
+                介護あり
+              <% else %>
+                介護なし
+              <% end %>
+            </li>
+            <% unless post.content == "" %>
+              <li>コメント：<%= post.content %></li>
+            <% end %>
+          </ul>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-<%# 新規追加 %>
-<% if user_signed_in? && current_user.id == @user.id %>
-  <%= link_to "新規追加", new_post_path %>
-  <%= link_to "ユーザ情報編集", edit_user_registration_path %>
-<% end %>
-
-<%# 投稿一覧 %>
-<% @posts.each do |post| %>
-  <hr>
-  <ul>
-    <li>
-      期間：<%= post.start_at %> ~ <%= post.end_at %>
-      <%# 編集と削除ボタン %>
-      <% if user_signed_in? && current_user.id == @user.id %>
-        <%= link_to "編集", edit_post_path(@post) %>
-        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}%>
-      <% end %>
-    </li>
-    <li>雇用形態：<%= post.employment_status %></li>
-    <li>婚姻歴：<%= post.marriage %></li>
-    <li>育児状況：<%= post.childcare %></li>
-    <% unless post.child.nil? %>
-      <li>子供：<%= post.child %>人</li>
-    <% end %>
-    <li>
-      介護状況：
-      <% if post.care == true %>
-        介護あり
-      <% else %>
-        介護なし
-      <% end %>
-    </li>
-    <% unless post.content == "" %>
-      <li>コメント：<%= post.content %></li>
-    <% end %>
-  </ul>
-  <hr>
-<% end %>
