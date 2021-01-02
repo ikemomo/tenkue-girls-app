@@ -1,0 +1,30 @@
+@mixin btn {
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 22px;
+  text-align: center;
+  text-decoration: none;
+  padding-right: 16px;
+  padding-left: 16px;
+  font-weight: $fw-mid;
+  cursor: pointer;
+
+  @media screen and (max-width: 576px) {
+    height: 32px;
+    font-size: 13px;
+    line-height: 32px;
+  }
+}
+
+@mixin container-white {
+  background-color: $main-color;
+  border-radius: 5px;
+  margin: 0 15vw;
+  padding: 33px 5vw;
+
+  @media screen and (max-width: 576px) {
+    margin: 0 5vw;
+    padding: 16px 3vw;
+  }
+}
