@@ -1,180 +1,324 @@
-html {
-  font-family: "Noto Sans JP", sans-serif;
-}
+.l-header {
+  position: relative;
+  z-index: 500;
 
-header {
-  background-color: rgba(0, 0, 0, 0);
-  position: fixed;
-  width: 100%;
-  .header-container {
-    color: #404040;
-    .logo {
-      display: inline-block;
-      font-size: 25px;
-      margin-left: 50px;
-      padding-top: 8.5px;
-      &:hover,
-      &:link,
-      &:visited,
-      &:active {
-        color: #404040;
-        text-decoration: none;
-      }
-    }
-    .sp-logo {
+  &__content {
+    display: block;
+    height: $header-height;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+
+    @include sp-layout {
       display: none;
     }
-    .header-items {
-      margin-right: 20px;
-      float: right;
-      .header-item {
-        box-sizing: border-box;
-        display: inline-block;
-        font-size: 20px;
-        margin-right: 20px;
-        height: 50px;
-        padding: 11.5px 25px 0px 25px;
-        &:hover {
-          background-color: #a0c0c0;
-        }
-        &:link,
-        &:visited,
-        &:active {
-          color: #404040;
-          text-decoration: none;
-        }
-      }
-    }
-    nav {
-      display: none;
-    }
-    .humberger-menu {
-      display: none;
-    }
-  }
-}
 
-//タブレット用
-@media screen and (max-width: 1000px) {
-  header {
-    .header-container {
-      .header-items {
-        margin-right: 10px;
-        .header-item {
-          margin-right: 10px;
-        }
-      }
-    }
-  }
-}
-
-//スマートフォン用
-@media screen and (max-width: 576px) {
-  header {
-    .menu-open {
-      background-color: rgba(64, 64, 64, 1);
-      height: 100vh;
-      width: 100vw;
-    }
-    .header-container {
-      padding: 0;
+    &__inner {
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      text-align: center;
-      .logo {
-        display: none;
+      justify-content: space-between;
+
+      & .logo {
+        margin-left: 50px;
+        line-height: $header-height;
       }
-      .sp-logo {
-        display: inline-block;
-        padding-top: 11.5px;
-        box-sizing: border-box;
-        height: 50px;
-        font-size: 20px;
-        width: 100%;
-        margin: 0;
-        &:hover,
-        &:link,
-        &:visited,
-        &:active {
-          color: #404040;
-          text-decoration: none;
-        }
-      }
-      .header-items {
-        display: none;
-      }
-      nav {
-        visibility: hidden;
-        margin: 0 auto;
-        margin-top: 150px;
-        display: flex;
-        flex-direction: column;
-        .nav-item,
-        .close-btn {
-          box-sizing: border-box;
-          height: 50px;
-          width: 100px;
-          margin-bottom: 50px;
-          padding-top: 11.5px;
-          &:link,
-          &:visited,
-          &:active {
-            color: #f0e0e0;
-            text-decoration: none;
-          }
-          &:hover {
-            background-color: #f0e0e0;
-            color: #404040;
-          }
-        }
-        .close-btn {
-          color: #f0e0e0;
+
+      &__nav {
+        margin-right: 20px;
+
+        &__item {
           display: inline-block;
-          margin-top: 271px;
+          line-height: $header-height;
+          padding: 0 25px;
+          color: $text-color;
+          text-decoration: none;
+
+          &:hover {
+            background-color: $header-hover-color;
+          }
         }
       }
     }
+  }
 
-    //ハンバーガーメニュー
-    .humberger-menu {
-      background-color: rgba(0, 0, 0, 0);
+  &__mobile {
+    display: none;
+  }
+}
+
+@include sp-layout {
+  // モバイル用のメニュー
+  .l-header {
+    &__mobile {
       display: block;
       position: fixed;
-      top: 12px;
-      right: 13px;
-      width: 31px;
-      height: 27px;
-      span {
-        background-color: #404040;
-        border-radius: 4px;
-        transition: 0.5s;
-        visibility: visible;
-        height: 2px;
-        width: 25px;
-        position: absolute;
-        left: 3px;
-      }
-      span:nth-child(1) {
-        top: 3px;
-      }
-      span:nth-child(2) {
-        top: 3px;
-        bottom: 3px;
-        margin: auto;
-      }
-      span:nth-child(3) {
-        bottom: 3px;
+      top: 0;
+      left: 0;
+      height: 50px;
+      width: 100%;
+
+      & .logo {
+        display: block;
+        line-height: 50px;
+        text-align: center;
       }
 
-      span:nth-child(1).toggle {
-        transform: translateY(10px) rotate(-45deg);
+      &__nav {
+        display: none;
       }
-      span:nth-child(2).toggle {
-        opacity: 0;
-      }
-      span:nth-child(3).toggle {
-        transform: translateY(-9px) rotate(45deg);
+
+      &__btnMenu {
+        background-color: rgba(0, 0, 0, 0);
+        display: block;
+        position: fixed;
+        top: 12px;
+        right: 13px;
+        width: 31px;
+        height: 27px;
+
+        span {
+          background-color: #404040;
+          border-radius: 4px;
+          transition: 0.5s;
+          visibility: visible;
+          height: 2px;
+          width: 25px;
+          position: absolute;
+          left: 3px;
+
+          &:nth-child(1) {
+            top: 3px;
+          }
+
+          &:nth-child(2) {
+            top: 3px;
+            bottom: 3px;
+            margin: auto;
+          }
+
+          &:nth-child(3) {
+            bottom: 3px;
+          }
+        }
       }
     }
   }
 }
+
+//スマホのメニューがオープンした時
+.open {
+  color: #f0e0e0;
+  .l-header {
+    &__mobile {
+      &__cover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(64, 64, 64, 1);
+      }
+
+      & .logo {
+        color: #f0e0e0;
+      }
+
+      &__nav {
+        display: block;
+        position: absolute;
+        top: 15vh;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &__item,
+        &__btnClose {
+          display: block;
+          height: 50px;
+          width: 100px;
+          text-align: center;
+          line-height: 50px;
+          text-decoration: none;
+          color: #f0e0e0;
+
+          &:hover {
+            background-color: #f0e0e0;
+            color: rgba(64, 64, 64, 1);
+          }
+        }
+
+        &__item {
+          margin-bottom: 50px;
+        }
+
+        &__btnClose {
+          margin-top: 200px;
+          cursor: pointer;
+        }
+      }
+
+      &__btnMenu {
+        span {
+          background-color: #f0e0e0;
+          &:nth-child(1) {
+            transform: translateY(10px) rotate(-45deg);
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+          }
+
+          &:nth-child(3) {
+            transform: translateY(-9px) rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+// header {
+//   .header-container {
+//     color: #404040;
+
+//     }
+//     .sp-logo {
+//       display: none;
+//     }
+//     .header-items {
+//
+//     nav {
+//       display: none;
+//     }
+//     .humberger-menu {
+//       display: none;
+//     }
+//   }
+// }
+
+// //タブレット用
+// @media screen and (max-width: 1000px) {
+//   header {
+//     .header-container {
+//       .header-items {
+//         margin-right: 10px;
+//         .header-item {
+//           margin-right: 10px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// //スマートフォン用
+// @media screen and (max-width: 576px) {
+//   header {
+//     .menu-open {
+//       background-color: rgba(64, 64, 64, 1);
+//       height: 100vh;
+//       width: 100vw;
+//     }
+//     .header-container {
+//       padding: 0;
+//       display: flex;
+//       flex-direction: column;
+//       text-align: center;
+//       .logo {
+//         display: none;
+//       }
+//       .sp-logo {
+//         display: inline-block;
+//         padding-top: 11.5px;
+//         box-sizing: border-box;
+//         height: 50px;
+//         font-size: 20px;
+//         width: 100%;
+//         margin: 0;
+//         &:hover,
+//         &:link,
+//         &:visited,
+//         &:active {
+//           color: #404040;
+//           text-decoration: none;
+//         }
+//       }
+//       .header-items {
+//         display: none;
+//       }
+//       nav {
+//         visibility: hidden;
+//         margin: 0 auto;
+//         margin-top: 150px;
+//         display: flex;
+//         flex-direction: column;
+//         .nav-item,
+//         .close-btn {
+//           box-sizing: border-box;
+//           height: 50px;
+//           width: 100px;
+//           margin-bottom: 50px;
+//           padding-top: 11.5px;
+//           &:link,
+//           &:visited,
+//           &:active {
+//             color: #f0e0e0;
+//             text-decoration: none;
+//           }
+//           &:hover {
+//             background-color: #f0e0e0;
+//             color: #404040;
+//           }
+//         }
+//         .close-btn {
+//           color: #f0e0e0;
+//           display: inline-block;
+//           margin-top: 271px;
+//         }
+//       }
+//     }
+
+//     //ハンバーガーメニュー
+//     .humberger-menu {
+//       background-color: rgba(0, 0, 0, 0);
+//       display: block;
+//       position: fixed;
+//       top: 12px;
+//       right: 13px;
+//       width: 31px;
+//       height: 27px;
+//       span {
+//         background-color: #404040;
+//         border-radius: 4px;
+//         transition: 0.5s;
+//         visibility: visible;
+//         height: 2px;
+//         width: 25px;
+//         position: absolute;
+//         left: 3px;
+//       }
+//       span:nth-child(1) {
+//         top: 3px;
+//       }
+//       span:nth-child(2) {
+//         top: 3px;
+//         bottom: 3px;
+//         margin: auto;
+//       }
+//       span:nth-child(3) {
+//         bottom: 3px;
+//       }
+
+//       span:nth-child(1).toggle {
+//         transform: translateY(10px) rotate(-45deg);
+//       }
+//       span:nth-child(2).toggle {
+//         opacity: 0;
+//       }
+//       span:nth-child(3).toggle {
+//         transform: translateY(-9px) rotate(45deg);
+//       }
+//     }
+//   }
+// }
