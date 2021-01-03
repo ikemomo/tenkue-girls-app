@@ -128,14 +128,14 @@
       <li class="p-users__list__item">
         <div>
         <%# プロフィール画像 %>
-        <%= image_tag user.image.url, class:"p-users__list__img" %>
+        <%= image_tag user.image.url, class:"c-users__list__img" %>
         </div>
         <div>
         <%# ユーザー名 %>
-        <p class="p-users__list__name">
+        <p class="c-users__list__name">
         <%= user.name %>
         </p>
-        <p class="p-users__list__profile">
+        <p class="c-users__list__profile">
         <%# 年齢 %>
         <% unless user.birthday.nil? %>
           年齢：<%= age(user) %>歳
@@ -168,7 +168,7 @@
           <% end %>
           </span>
           </p>
-          <p class="p-users__list__comment">
+          <p class="c-users__list__comment">
           <%# コメント %>
           <% unless @post.content == "" %>
             コメント：<%= @post.content %>
