@@ -12,6 +12,83 @@
     padding: 82px 26px;
   }
 
+  &__follow {
+    padding-top: 82px;
+    background-color: $background-color;
+
+    @include sp-layout {
+      padding-top: 61px;
+    }
+
+    &__list {
+      width: 1029px;
+      margin: 0 auto;
+      background-color: $main-color;
+      padding: 14.5px;
+
+      @include tab-layout {
+        width: 700px;
+      }
+
+      @include sp-layout {
+        width: 323px;
+      }
+
+      &__tab {
+        display: flex;
+        border-bottom: 1px solid #718181;
+        text-decoration: none;
+
+        &__color {
+          color: $accent-color;
+          font-weight: $fw-bold;
+          border-bottom: $accent-color 8px solid;
+
+          @include sp-layout {
+            border-bottom: $accent-color 5px solid;
+          }
+        }
+
+        p {
+          width: 500px;
+          text-align: center;
+          height: 74px;
+          padding: 25px 0;
+          font-size: 17px;
+
+          @include sp-layout {
+            width: 151px;
+            height: 46px;
+            font-size: 15px;
+            padding: 12px 0;
+          }
+
+          a {
+            color: #707070;
+            font-weight: $fw-bold;
+          }
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    &__item {
+      list-style: none;
+      border-bottom: 1px solid #718181;
+      display: flex;
+      padding: 22px;
+      text-decoration: none;
+      position: relative;
+
+      @include sp-layout {
+        display: block;
+      }
+    }
+  }
+
   &__search {
     width: 199px;
     background-color: $main-color;
@@ -98,50 +175,6 @@
 
       @include sp-layout {
         display: block;
-      }
-    }
-
-    &__img {
-      width: 90px;
-      height: 90px;
-      margin-right: 18px;
-      border-radius: 50%;
-
-      @include sp-layout {
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-    &__name {
-      color: $text-color;
-      font-weight: bold;
-      margin-bottom: 15px;
-      font-size: 17px;
-
-      @include sp-layout {
-        position: absolute;
-        top: 32px;
-        left: 70px;
-        font-size: 15px;
-      }
-    }
-
-    &__profile {
-      color: #718181;
-      font-size: 15px;
-      margin-bottom: 15px;
-
-      @include sp-layout {
-        font-size: 13px;
-      }
-    }
-    &__comment {
-      color: $text-color;
-      font-size: 16px;
-
-      @include sp-layout {
-        font-size: 13px;
       }
     }
   }
