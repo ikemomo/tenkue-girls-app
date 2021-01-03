@@ -16,11 +16,19 @@
     padding-top: 82px;
     background-color: $background-color;
 
+    @include sp-layout {
+      padding-top: 61px;
+    }
+
     &__list {
       width: 1029px;
       margin: 0 auto;
       background-color: $main-color;
       padding: 14.5px;
+
+      @include sp-layout {
+        width: 323px;
+      }
 
       &__tab {
         display: flex;
@@ -31,6 +39,10 @@
           color: $accent-color;
           font-weight: $fw-bold;
           border-bottom: $accent-color 8px solid;
+
+          @include sp-layout {
+            border-bottom: $accent-color 5px solid;
+          }
         }
 
         p {
@@ -39,6 +51,10 @@
           height: 74px;
           padding: 25px 0;
           font-size: 17px;
+
+          @include sp-layout {
+            height: 46px;
+          }
 
           a {
             color: #707070;
