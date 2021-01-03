@@ -26,6 +26,10 @@
       background-color: $main-color;
       padding: 14.5px;
 
+      @include tab-layout {
+        width: 700px;
+      }
+
       @include sp-layout {
         width: 323px;
       }
@@ -53,7 +57,10 @@
           font-size: 17px;
 
           @include sp-layout {
+            width: 151px;
             height: 46px;
+            font-size: 15px;
+            padding: 12px 0;
           }
 
           a {
