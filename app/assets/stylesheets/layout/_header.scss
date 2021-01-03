@@ -3,14 +3,17 @@
   z-index: 500;
 
   &__content {
-    display: block;
-    height: $header-height;
-    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
+    display: block;
+    height: $header-height-lg;
+    width: 100%;
+    background-color: white;
+    opacity: 0.9;
+    box-shadow: 0px 3px 6px #00000029;
 
     @include sp-layout {
       display: none;
@@ -20,10 +23,11 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+      font-size: 20px;
 
       & .logo {
         margin-left: 50px;
-        line-height: $header-height;
+        line-height: $header-height-lg;
       }
 
       &__nav {
@@ -31,7 +35,7 @@
 
         &__item {
           display: inline-block;
-          line-height: $header-height;
+          line-height: $header-height-lg;
           padding: 0 25px;
           color: $text-color;
           text-decoration: none;
@@ -49,20 +53,45 @@
   }
 }
 
+//タブレット用ヘッダー
+@include tab-layout {
+  .l-header {
+    &__content {
+      height: $header-height-sm;
+
+      &__inner {
+        & .logo {
+          line-height: $header-height-sm;
+        }
+
+        &__nav {
+          &__item {
+            line-height: $header-height-sm;
+          }
+        }
+      }
+    }
+  }
+}
+
+// モバイル用ヘッダー
 @include sp-layout {
-  // モバイル用のメニュー
   .l-header {
     &__mobile {
       display: block;
       position: fixed;
       top: 0;
       left: 0;
-      height: 50px;
+      height: $header-height-sm;
       width: 100%;
+      font-size: 20px;
+      background-color: white;
+      opacity: 0.9;
+      box-shadow: 0px 3px 6px #00000029;
 
       & .logo {
         display: block;
-        line-height: 50px;
+        line-height: $header-height-sm;
         text-align: center;
       }
 
@@ -108,7 +137,7 @@
   }
 }
 
-//スマホのメニューがオープンした時
+//モバイル用メニューがオープンした時
 .open {
   color: #f0e0e0;
   .l-header {
