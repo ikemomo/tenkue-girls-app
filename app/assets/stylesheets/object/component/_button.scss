@@ -166,3 +166,50 @@
     }
   }
 }
+
+//新規投稿・編集画面のボタン（PC）
+.c-btn-post {
+  @include btn;
+  position: absolute;
+  right: 5vw;
+  bottom: 33px;
+  color: $main-color;
+  background-color: $accent-color;
+  width: 175px;
+
+  &:hover {
+    background-color: $btn-hover-color;
+  }
+
+  &__mobile {
+    display: none;
+  }
+}
+
+//新規投稿・編集画面のボタン（Mobile）
+@include sp-layout {
+  .c-btn-post {
+    display: none;
+
+    &__mobile {
+      display: block;
+      @include btn;
+      color: $main-color;
+      background-color: $accent-color;
+      position: fixed;
+      top: 8.5px;
+      right: 5vw;
+    }
+  }
+}
+
+.c-btn__back {
+  display: block;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: fixed;
+  top: 1px;
+  left: 5vw;
+}
