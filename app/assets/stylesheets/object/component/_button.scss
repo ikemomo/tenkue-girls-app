@@ -166,3 +166,16 @@
     }
   }
 }
+
+.c-submit__btn {
+  background-color: $accent-color;
+  width: 384px;
+  height: 48px;
+  border-radius: 8px;
+  color: $main-color;
+  margin-bottom: 33px;
+
+  &:hover {
+    background-color: $btn-hover-color;
+  }
+}
