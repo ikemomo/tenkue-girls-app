@@ -167,6 +167,19 @@
   }
 }
 
+.c-submit__btn {
+  background-color: $accent-color;
+  width: 384px;
+  height: 48px;
+  border-radius: 8px;
+  color: $main-color;
+  margin-bottom: 33px;
+
+  &:hover {
+    background-color: $btn-hover-color;
+  }
+}
+
 //新規投稿・編集画面のボタン（PC）
 .c-btn-post {
   @include btn;
@@ -203,6 +216,7 @@
   }
 }
 
+//新規投稿・編集画面の戻るボタン（Mobile）
 .c-btn__back {
   display: block;
   background-color: transparent;

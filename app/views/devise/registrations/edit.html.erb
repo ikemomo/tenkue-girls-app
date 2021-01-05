@@ -1,4 +1,6 @@
-<h2>ユーザー情報編集</h2>
+<section class="p-registrations__edit">
+<div class="p-registrations__edit__box">
+<h2>設定を変更する</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -6,13 +8,13 @@
   <% # ユーザー名 %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"field-box" %>
   </div>
   
   <% # メールアドレス %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"field-box" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -22,7 +24,7 @@
   <% # パスワード %>
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password",class:"field-box" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -32,37 +34,44 @@
   <% # パスワード(確認用) %>
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"field-box" %>
   </div>
 
   <% # 現在のパスワード %>
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :current_password %> <br />
+    <%= f.password_field :current_password, autocomplete: "current-password",class:"field-box" %>
   </div>
 
   <% # 誕生日 %>
   <div class="field">
     <%= f.label :birthday %><br />
-    <%= f.date_field :birthday %>
+    <%= f.date_field :birthday, class:"field-box-half" %>
   </div>
 
   <% # エンジニア歴 %>
   <div class="field">
     <%= f.label :engineer_start_at %><br />
-    <%= f.date_field :engineer_start_at %>
+    <%= f.date_field :engineer_start_at, class:"field-box-half" %>
   </div>
 
   <% # 画像アップロード %>
   <div class="field">
+  <label>
   <%= f.label :image %>
-  <%= f.file_field :image %>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
+  <div class="field-box-half">ファイルを選択
   </div>
+  <%= f.file_field :image,class:"field-box-img"%>
+  </label>
+  </div>
+
+ <div class="field">
+  <button class="c-submit__btn">
+    <%= f.submit "更新" %>
+  </button>
 <% end %>
 
-<%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-
 <%= link_to "戻る", :back %>
+<%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"sub-text"%>
+</div>
+</section>

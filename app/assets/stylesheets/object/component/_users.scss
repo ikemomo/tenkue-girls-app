@@ -1,0 +1,44 @@
+.c-users__list__img {
+  width: 90px;
+  height: 90px;
+  margin-right: 18px;
+  border-radius: 50%;
+
+  @include sp-layout {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.c-users__list__name {
+  color: $text-color;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 17px;
+
+  @include sp-layout {
+    position: absolute;
+    top: 32px;
+    left: 70px;
+    font-size: 15px;
+  }
+}
+
+.c-users__list__profile {
+  color: #718181;
+  font-size: 15px;
+  margin-bottom: 15px;
+
+  @include sp-layout {
+    font-size: 13px;
+  }
+}
+
+.c-users__list__comment {
+  color: $text-color;
+  font-size: 16px;
+
+  @include sp-layout {
+    font-size: 13px;
+  }
+}

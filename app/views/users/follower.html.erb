@@ -1,13 +1,24 @@
-<h3>フォロワー</h3>
+<section class="p-users__follow">
+<div class="p-users__follow__list">
+<div class="p-users__follow__list__tab">
+<p class="p-users__follow__list__tab__color">フォロワー</p>
+<p><%= link_to "フォロー中", user_follow_path(@user.id) %></p>
+</div>
 <ul>
   <% if @followers.count != 0 %>
     <% @followers.each do |follower| %>
       <%= link_to user_path(follower.id) do %>  
-        <li class="user_index">
+        <li class="p-users__list__item">
+        <div>
           <%# プロフィール画像 %>
-          <%= image_tag follower.image.url, width: 50 %>
+          <%= image_tag follower.image.url, class:"c-users__list__img" %>
+        </div>
+        <div>  
           <%# ユーザー名 %>
-          ユーザー名：<%= follower.name %><br>
+          <p class="c-users__list__name">
+          <%= follower.name %><br>
+          </p>
+          <p class="c-users__list__profile">
           <%# 年齢 %>
           <% unless follower.birthday.nil? %>
             年齢：<%= (Date.today.strftime('%Y%m%d').to_i - follower.birthday.strftime('%Y%m%d').to_i) / 10000  %>歳
@@ -19,35 +30,43 @@
           <% unless follower.posts.count == 0 %>
             <% @post = follower.posts.last %>
             <%# 雇用形態 %>
-            雇用形態：<%= @post.employment_status %>
+            <span class="u-margin-right">
+            雇用形態：<%= @post.employment_status %></span><br>
           
             <%# 婚姻歴 %>
-            婚姻歴：<%= @post.marriage %>
+            <span class="u-margin-right">
+            婚姻歴：<%= @post.marriage %></span>
           
             <%# 育児状況 %>
-            育児状況：<%= @post.childcare %>
+            <span class="u-margin-right">
+            育児状況：<%= @post.childcare %></span>
           
             <%# 介護状況 %>
+            <span class="u-margin-right">
             <% if @post.care == true %>
               介護あり
             <% else %>
               介護なし
             <% end %>
-          
+            </span>
+          </p>
+          <p class="c-users__list__comment">
             <%# コメント %>
             <% unless @post.content == "" %>
-              コメント：<%= @post.content %>
+              <%= @post.content %>
             <% end %>
+            </p>
           <% end %>
           
           <%# フォローボタン %>
           <% if current_user != follower %>
             <% if follower.followed_by?(current_user) %>
-              <P><%= link_to "フォロー中", user_relationships_path(follower.id), method: :delete %></p>
+              <P><%= link_to "フォロー中", user_relationships_path(follower.id), method: :delete, class:"c-button__green" %></p>
             <% else %>
-              <P><%= link_to "フォローする", user_relationships_path(follower.id), method: :post %></p>
+              <P><%= link_to "フォローする", user_relationships_path(follower.id), method: :post, class:"c-button__white" %></p>
             <% end %>
           <% end %>
+        </div>
         </li>
       <% end %>
     <% end %>
@@ -55,5 +74,6 @@
     <p>まだフォロワーがいません</p>
   <% end %>
 </ul>
-<%= link_to "フォロー中", user_follow_path(@user.id) %>
+</div>
 <%= link_to "マイページに戻る", user_path(@user.id)%>
+</section>
