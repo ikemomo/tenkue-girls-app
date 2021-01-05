@@ -101,7 +101,6 @@
     box-shadow: 0px 3px 6px $shadow-color;
 
     @include sp-layout {
-      width: 350px;
       background-color: $background-color;
       box-shadow: none;
     }
@@ -125,7 +124,6 @@
       margin: 12px auto;
 
       @include sp-layout {
-        width: 302px;
         margin: 12px auto;
       }
 
