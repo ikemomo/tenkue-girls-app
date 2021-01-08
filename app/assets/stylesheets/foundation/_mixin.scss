@@ -23,6 +23,11 @@
   margin: 0 15vw;
   padding: 33px 5vw;
 
+  @media screen and(max-width:1000px) {
+    margin: 0 8vw;
+    padding: 24px 4vw;
+  }
+
   @media screen and (max-width: 576px) {
     margin: 0 5vw;
     padding: 16px 3vw;

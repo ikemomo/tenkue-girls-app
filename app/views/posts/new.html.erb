@@ -1,56 +1,87 @@
-<h2>新規投稿</h2>
-
-<%= form_for @post do |f| %>
-  <% # 期間 %>
-  <div class="field">
-    <%= f.label "期間" %><br>
-    <%= f.date_field :start_at, autocomplete: "start_at" %>
-    ~
-    <%= f.date_field :end_at, autocomplete: "end_at" %>
+<div class = "p-post">
+  <div class = "p-post__board">
+    <div class = "p-post__board__content">
+      <h2>新しく追加する</h2>
+        <div class = "p-post__board__content__items">
+          <%= form_for @post do |f| %>
+            <% # 期間 %>
+            <div class="field">
+              <%= f.label "期間" %><br>
+              <%= f.date_field :start_at, autocomplete: "start_at" %>
+              ~
+              <%= f.date_field :end_at, autocomplete: "end_at" %>
+            </div>
+            <p></p>
+            <% # 雇用形態 %>
+            <div class="field">
+              <%= f.label :employment_status, "雇用形態" %><br>
+              <%= f.select :employment_status, [["正社員", "正社員"], ["契約社員", "契約社員"], ["業務委託", "業務委託"], ["フリーランス", "フリーランス"], ["アルバイト", "アルバイト"], ["その他", "その他"]], {include_blank: "選択してください"}, {class: 'form-control', required: true} %>
+            </div>
+            <p></p>
+            <% # 婚姻歴 %>
+            <div class="field">
+              <%= f.label :marriage, "婚姻歴" %><br>
+              <span class = "field__item">
+                <%= f.radio_button :marriage, "未婚" %>未婚
+              </span>
+              <span class = "field__item">
+                <%= f.radio_button :marriage, "既婚" %>既婚
+              </span>
+              <span class = "field__item">
+                <%= f.radio_button :marriage, "離別" %>離別
+              </span>
+            </div>
+            <p></p>
+            <% # 育児状況 %>
+            <div class="field">
+              <%= f.label :childcare, "育児状況" %><br>
+              <span class = "field__item">
+                <%= f.radio_button :childcare, "子供なし" %>子供なし
+              </span>
+              <span class = "field__item">
+                <%= f.radio_button :childcare, "子供あり(育児なし)" %>子供あり(育児なし)
+              </span>
+              <span class = "field__item">
+                <%= f.radio_button :childcare, "子供あり(育児あり)" %>子供あり(育児あり)
+              </span>
+            </div>
+            <p></p>
+            <% # 子供の人数 %>
+            <div class="field">
+              <%= f.label :child, "子供の人数(子供がいる方のみお答えください)" %><br>
+              <%= f.number_field :child, min: 1 %> 人
+            </div>
+            <p></p>
+            <% # 介護状況 %>
+            <div class="field">
+              <%= f.label :care, "介護状況" %><br>
+              <span class = "field__item">
+                <%= f.radio_button :care, "true" %>介護あり
+              </span>
+              <span class = "field__item">
+                <%= f.radio_button :care, "false" %>介護なし
+              </span>
+            </div>
+            <p></p>
+            <% # コメント %>
+            <div class="field">
+            <%= f.label :content, "コメント" %><br>
+            <%= f.text_area :content %>
+            <p></p>
+            <% # 新規登録ボタン %>
+            <div class="actions">
+              <%= f.submit "新規登録", class: "c-btn-post" %>
+            </div>
+            <% # 新規登録ボタン/モバイル用%>
+            <div class = "p-post__mobileCover">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+              <%= link_to "", :back, class: "c-btn__back" %>
+              <div class="actions">
+              <%= f.submit "新しく追加する", class: "c-btn-post__mobile" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
   </div>
-  <p></p>
-  <% # 雇用形態 %>
-  <div class="field">
-    <%= f.label :employment_status, "雇用形態" %><br>
-    <%= f.select :employment_status, [["正社員", "正社員"], ["契約社員", "契約社員"], ["業務委託", "業務委託"], ["フリーランス", "フリーランス"], ["アルバイト", "アルバイト"], ["その他", "その他"]], {include_blank: "選択してください"}, {class: 'form-control', required: true} %>
-  </div>
-  <p></p>
-  <% # 婚姻歴 %>
-  <div class="field">
-    <%= f.label :marriage, "婚姻歴" %><br>
-    <%= f.radio_button :marriage, "未婚" %>未婚
-    <%= f.radio_button :marriage, "既婚" %>既婚
-    <%= f.radio_button :marriage, "離別" %>離別
-  </div>
-  <p></p>
-  <% # 育児状況 %>
-  <div class="field">
-    <%= f.label :childcare, "育児状況" %><br>
-    <%= f.radio_button :childcare, "子供なし" %>子供なし
-    <%= f.radio_button :childcare, "子供あり(育児なし)" %>子供あり(育児なし)
-    <%= f.radio_button :childcare, "子供あり(育児あり)" %>子供あり(育児あり)
-  </div>
-  <p></p>
-  <% # 子供の人数 %>
-  <div class="field">
-    <%= f.label :child, "子供の人数(子供がいる方のみお答えください)" %><br>
-    <%= f.number_field :child, min: 1 %> 人
-  </div>
-  <p></p>
-  <% # 介護状況 %>
-  <div class="field">
-    <%= f.label :care, "介護状況" %><br>
-    <%= f.radio_button :care, "true" %>介護あり
-    <%= f.radio_button :care, "false" %>介護なし
-  </div>
-  <p></p>
-  <% # コメント %>
-  <div class="field">
-   <%= f.label :content, "コメント" %><br>
-   <%= f.text_area :content %>
-  <p></p>
-  <% # 新規登録ボタン %>
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
+</div>
