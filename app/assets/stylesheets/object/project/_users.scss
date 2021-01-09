@@ -151,12 +151,16 @@
 
   &__list {
     width: 802px;
-    background-color: $main-color;
-    padding: 15px;
 
     @include sp-layout {
       width: 100%;
     }
+
+    &__box {
+      background-color: $main-color;
+      padding: 15px;
+    }
+
     &.close {
       display: none;
     }

@@ -121,8 +121,8 @@
 <% end %>
 </div>
 
-<div>
-  <ul class="p-users__list">
+<div class="p-users__list">
+  <ul class="p-users__list__box">
   <% @users.each do |user| %>
     <%= link_to user_path(user.id) do %>
       <li class="p-users__list__item">
