@@ -121,8 +121,8 @@
 <% end %>
 </div>
 
-<div class="p-users__list">
-  <ul>
+<div>
+  <ul class="p-users__list">
   <% @users.each do |user| %>
     <%= link_to user_path(user.id) do %>
       <li class="p-users__list__item">
@@ -192,9 +192,9 @@
       </li>
     <% end %>
   <% end %>
-  </ol>
+  </ul>
+  <button class="c-paginate__btn"><%= paginate @users %></button>
 </div>
-<%= paginate @users %>
 <button class="c-button__users__search"><i class="fas fa-search"></i></button>
 </section>
 
