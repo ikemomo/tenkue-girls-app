@@ -1,0 +1,14 @@
+//エラーメッセージ等の表示
+
+.u-notice {
+  position: absolute;
+  top: 70px;
+  left: 0;
+}
+
+.u-alert {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  color: $error-color;
+}
