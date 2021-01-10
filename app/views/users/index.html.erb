@@ -193,6 +193,9 @@
     <% end %>
   <% end %>
   </ol>
+  <% if @users.count == 0 %>
+    <p>検索結果が見つかりませんでした</p>
+  <% end %>
 </div>
 <%= paginate @users %>
 <button class="c-button__users__search"><i class="fas fa-search"></i></button>
