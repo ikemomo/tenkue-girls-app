@@ -99,7 +99,7 @@
               <% if user_signed_in? && current_user.id == @user.id %>
                   <%= link_to "編集", edit_post_path(post), class: "p-user-container__career__contents__edit" %>
                   <%= link_to "削除", post_path(post), method: :delete, data: {confirm: "削除しますか？"}, class: "p-user-container__career__contents__delete" %>
-              <% end %>q
+              <% end %>
             </li>
             <li>雇用形態：<%= post.employment_status %></li>
             <li>婚姻歴：<%= post.marriage %></li>
@@ -121,6 +121,7 @@
           </ul>
           <hr>
         <% end %>
+        <%= link_to '戻る', 'javascript:history.back()'%>
       </div>
     </div>
   </div>
