@@ -1,7 +1,7 @@
 <header class="l-header">
   <div class="l-header__content"> 
     <div class = "l-header__content__inner">
-      <%= link_to "サイト名", root_path, class: "logo" %>
+      <%= link_to image_tag("logo-header.svg"), root_path, class: "logo" %>
       <nav class="l-header__content__inner__nav">
         <% if user_signed_in? %>
           <%# ログインしている時 %>
@@ -19,7 +19,7 @@
 
   <div class = "l-header__mobile">
     <div class="l-header__mobile__cover"></div>
-    <%= link_to "サイト名", root_path, class: "logo" %>
+    <%= link_to image_tag("logo-header.svg"), root_path, class: "logo" %>
     <nav class = "l-header__mobile__nav">
       <% if user_signed_in? %>
         <%# ログインしている時 %>
