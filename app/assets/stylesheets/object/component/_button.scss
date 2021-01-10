@@ -48,6 +48,46 @@
   }
 }
 
+//ページネーションボタン
+.c-paginate__btn {
+  width: 100%;
+  margin: 50px auto;
+  font-size: 17px;
+  outline: none;
+
+  a {
+    text-decoration: none;
+    color: $sub-text-color;
+  }
+
+  & .page {
+    color: $sub-text-color;
+    background-color: $text-color2;
+    display: inline-block;
+    width: 33px;
+    margin: 0 5px;
+    font-size: 17px;
+    border: 2px solid $sub-text-color;
+
+    &.current {
+      background-color: $sub-text-color;
+      color: $text-color2;
+      display: inline-block;
+      width: 33px;
+      margin: 0 5px;
+      border: 2px solid $sub-text-color;
+    }
+  }
+
+  & .next {
+    margin-right: 5px;
+  }
+
+  & .prev {
+    margin-left: 5px;
+  }
+}
+
 //sp版ユーザー検索ボタン
 .c-button__users__search {
   display: none;
