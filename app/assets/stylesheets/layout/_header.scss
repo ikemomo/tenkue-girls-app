@@ -26,8 +26,12 @@
       font-size: 20px;
 
       & .logo {
-        margin-left: 50px;
-        line-height: $header-height-lg;
+        display: flex;
+        align-items: center;
+        & > img {
+          margin-left: 50px;
+          width: 140px;
+        }
       }
 
       &__nav {
@@ -60,10 +64,6 @@
       height: $header-height-sm;
 
       &__inner {
-        & .logo {
-          line-height: $header-height-sm;
-        }
-
         &__nav {
           &__item {
             line-height: $header-height-sm;
@@ -91,8 +91,13 @@
 
       & .logo {
         display: block;
-        line-height: $header-height-sm;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: $header-height-sm;
+        & > img {
+          width: 140px;
+        }
       }
 
       &__nav {
@@ -153,10 +158,6 @@
         background-color: rgba(64, 64, 64, 1);
       }
 
-      & .logo {
-        color: #f0e0e0;
-      }
-
       &__nav {
         display: block;
         position: absolute;
@@ -209,147 +210,3 @@
     }
   }
 }
-
-// header {
-//   .header-container {
-//     color: #404040;
-
-//     }
-//     .sp-logo {
-//       display: none;
-//     }
-//     .header-items {
-//
-//     nav {
-//       display: none;
-//     }
-//     .humberger-menu {
-//       display: none;
-//     }
-//   }
-// }
-
-// //タブレット用
-// @media screen and (max-width: 1000px) {
-//   header {
-//     .header-container {
-//       .header-items {
-//         margin-right: 10px;
-//         .header-item {
-//           margin-right: 10px;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// //スマートフォン用
-// @media screen and (max-width: 576px) {
-//   header {
-//     .menu-open {
-//       background-color: rgba(64, 64, 64, 1);
-//       height: 100vh;
-//       width: 100vw;
-//     }
-//     .header-container {
-//       padding: 0;
-//       display: flex;
-//       flex-direction: column;
-//       text-align: center;
-//       .logo {
-//         display: none;
-//       }
-//       .sp-logo {
-//         display: inline-block;
-//         padding-top: 11.5px;
-//         box-sizing: border-box;
-//         height: 50px;
-//         font-size: 20px;
-//         width: 100%;
-//         margin: 0;
-//         &:hover,
-//         &:link,
-//         &:visited,
-//         &:active {
-//           color: #404040;
-//           text-decoration: none;
-//         }
-//       }
-//       .header-items {
-//         display: none;
-//       }
-//       nav {
-//         visibility: hidden;
-//         margin: 0 auto;
-//         margin-top: 150px;
-//         display: flex;
-//         flex-direction: column;
-//         .nav-item,
-//         .close-btn {
-//           box-sizing: border-box;
-//           height: 50px;
-//           width: 100px;
-//           margin-bottom: 50px;
-//           padding-top: 11.5px;
-//           &:link,
-//           &:visited,
-//           &:active {
-//             color: #f0e0e0;
-//             text-decoration: none;
-//           }
-//           &:hover {
-//             background-color: #f0e0e0;
-//             color: #404040;
-//           }
-//         }
-//         .close-btn {
-//           color: #f0e0e0;
-//           display: inline-block;
-//           margin-top: 271px;
-//         }
-//       }
-//     }
-
-//     //ハンバーガーメニュー
-//     .humberger-menu {
-//       background-color: rgba(0, 0, 0, 0);
-//       display: block;
-//       position: fixed;
-//       top: 12px;
-//       right: 13px;
-//       width: 31px;
-//       height: 27px;
-//       span {
-//         background-color: #404040;
-//         border-radius: 4px;
-//         transition: 0.5s;
-//         visibility: visible;
-//         height: 2px;
-//         width: 25px;
-//         position: absolute;
-//         left: 3px;
-//       }
-//       span:nth-child(1) {
-//         top: 3px;
-//       }
-//       span:nth-child(2) {
-//         top: 3px;
-//         bottom: 3px;
-//         margin: auto;
-//       }
-//       span:nth-child(3) {
-//         bottom: 3px;
-//       }
-
-//       span:nth-child(1).toggle {
-//         transform: translateY(10px) rotate(-45deg);
-//       }
-//       span:nth-child(2).toggle {
-//         opacity: 0;
-//       }
-//       span:nth-child(3).toggle {
-//         transform: translateY(-9px) rotate(45deg);
-//       }
-//     }
-//   }
-// }
