@@ -1,7 +1,7 @@
 <div class = "p-post">
   <div class = "p-post__board">
     <div class = "p-post__board__content">
-      <h2>投稿を編集する</h2>      
+      <h2>投稿を編集する</h2>
       <div class = "p-post__board__content__items">
           <%= form_for @post do |f| %>
             <% # 期間 %>
@@ -68,6 +68,10 @@
             <%= f.label :content, "コメント" %><br>
             <%= f.text_area :content %>
             <p></p>
+
+            <% # 戻るボタン %>
+            <%= link_to "戻る", :back %>
+
             <% # 保存ボタン %>
             <div class="actions">
               <%= f.submit "保存する", class: "c-btn-post" %>
@@ -80,7 +84,7 @@
               <%= f.submit "保存する", class: "c-btn-post__mobile" %>
               </div>
             </div>
-          <% end %> 
+          <% end %>
       </div>
     </div>
   </div>
