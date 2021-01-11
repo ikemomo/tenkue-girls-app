@@ -16,18 +16,9 @@
 
   &__inner {
     height: 100vh;
-    // padding: 0 171px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    // @include tab-layout {
-    //   padding: 0 82px;
-    // }
-
-    // @include sp-layout {
-    //   padding: 0 50px;
-    // }
   }
 
   &__title {
@@ -37,17 +28,6 @@
     @include sp-layout {
       width: 80%;
     }
-
-    // @include tab-layout {
-    //   text-align: center;
-    //   margin-bottom: 50px;
-    // }
-
-    // @include sp-layout {
-    //   padding-top: 100px;
-    //   text-align: center;
-    //   margin-bottom: 50px;
-    // }
 
     img {
       @include sp-layout {
@@ -66,40 +46,9 @@
     }
   }
 
-  // &__siteTitle {
-  //   font-size: 75px;
-  //   color: #404040;
-
-  //   @include sp-layout {
-  //     font-size: 50px;
-  //   }
-  // }
-
-  // &__img {
-  //   height: 452px;
-  //   margin-bottom: 100px;
-  //   border: 1px solid #707070;
-
-  //   // @include tab-layout {
-  //   //   margin-bottom: 50px;
-  //   // }
-
-  //   // @include sp-layout {
-  //   //   margin-bottom: 50px;
-  //   // }
-
-  //   img {
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-  // }
-
   &__search {
     text-align: center;
     margin-top: 100px;
-
-    // @include tab-layout {
-    // }
 
     &__btn {
       width: 190px;
