@@ -192,6 +192,9 @@
       </li>
     <% end %>
   <% end %>
+  <% if @users.count == 0 %>
+    <p>検索結果が見つかりませんでした</p>
+  <% end %>
   </ul>
   <button class="c-paginate__btn"><%= paginate @users %></button>
 </div>
