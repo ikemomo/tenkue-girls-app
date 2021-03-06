@@ -38,6 +38,7 @@ https://tech-women-reference.herokuapp.com/
 
 <img width="1791" alt="スクリーンショット 2021-03-06 19 38 57" src="https://user-images.githubusercontent.com/61915228/110203844-a3f63700-7eb3-11eb-9811-f7941a0ba184.png">
 
-<img width="1521" alt="スクリーンショット 2021-03-06 19 40 26" src="https://user-images.githubusercontent.com/61915228/110203910-d6a02f80-7eb3-11eb-96ce-6bef1328be4f.png">
+<img width="1521" alt="スクリーンショット 2021-03-06 19 44 44" src="https://user-images.githubusercontent.com/61915228/110204077-7f4e8f00-7eb4-11eb-84c9-0a77bb77e4d6.png">
+
 
 
